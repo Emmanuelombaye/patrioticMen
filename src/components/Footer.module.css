@@ -1,0 +1,78 @@
+.footer {
+  padding: 3.5rem 0 2rem;
+  border-top: 1px solid var(--line);
+  background: #000;
+}
+
+.inner {
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+  display: grid;
+  gap: 2rem;
+}
+
+.brand {
+  max-width: 26rem;
+}
+
+.logo {
+  width: min(220px, 70%);
+  height: auto;
+  margin-bottom: 1rem;
+  mix-blend-mode: lighten;
+  object-fit: contain;
+}
+
+.brand p {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.cols {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.cols h2 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  margin-bottom: 0.7rem;
+}
+
+.cols a {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+}
+
+.cols a:hover {
+  color: var(--brand-white);
+}
+
+.legal {
+  width: min(100% - 2rem, var(--max));
+  margin: 2.5rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.75rem;
+  color: rgba(232, 237, 245, 0.45);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 800px) {
+  .inner {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+
+  .cols {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,220 @@
+.hero {
+  position: relative;
+  min-height: calc(100svh - var(--header-h));
+  display: grid;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 40%, rgba(171, 12, 18, 0.2), transparent 60%),
+    radial-gradient(ellipse 55% 50% at 15% 20%, rgba(1, 25, 59, 0.95), transparent 65%),
+    linear-gradient(160deg, #000 0%, #01193b 48%, #050b16 100%);
+}
+
+.glow {
+  position: absolute;
+  inset: auto -10% -20% 40%;
+  height: 55%;
+  background: radial-gradient(circle, rgba(171, 12, 18, 0.3), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: pulse 7s ease-in-out infinite;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 85%);
+  pointer-events: none;
+}
+
+.copy {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 1.25rem, var(--max));
+  margin: 0 auto;
+  padding: clamp(2.4rem, 6vw, 3.8rem) 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.05rem;
+}
+
+.brandLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brandMark {
+  width: clamp(2.4rem, 6vw, 3.1rem);
+  height: clamp(2.4rem, 6vw, 3.1rem);
+  object-fit: contain;
+  mix-blend-mode: lighten;
+  filter: brightness(1.2);
+}
+
+.brandLine span {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: clamp(1.7rem, 5.2vw, 2.7rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.brandLine em {
+  font-style: normal;
+  font-size: 0.38em;
+  letter-spacing: 0.28em;
+  color: var(--brand-red);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.55rem, 9vw, 5.4rem);
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  max-width: 10ch;
+}
+
+.lede {
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: clamp(0.98rem, 2.2vw, 1.15rem);
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.35rem;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.2rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  transition: transform 180ms ease, filter 180ms ease, border-color 180ms ease;
+}
+
+.primary {
+  background: var(--brand-red);
+  color: var(--brand-white);
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.secondary {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.secondary:hover {
+  border-color: rgba(232, 237, 245, 0.35);
+  transform: translateY(-2px);
+}
+
+.visual {
+  position: relative;
+  min-height: min(68vw, 28rem);
+  margin-top: auto;
+  overflow: hidden;
+}
+
+.imageWrap {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center 28%;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 11, 22, 0.1) 0%, rgba(5, 11, 22, 0.5) 55%, rgba(5, 11, 22, 0.96) 100%),
+    linear-gradient(90deg, rgba(5, 11, 22, 0.72), transparent 48%);
+  pointer-events: none;
+}
+
+.orbit {
+  position: absolute;
+  width: min(70vw, 28rem);
+  aspect-ratio: 1;
+  right: -12%;
+  top: 8%;
+  border: 1px solid rgba(171, 12, 18, 0.28);
+  border-radius: 50%;
+  pointer-events: none;
+  mask-image: linear-gradient(120deg, transparent, #000 40%, transparent);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: stretch;
+  }
+
+  .copy {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 4.5rem 0 4.5rem clamp(1.25rem, 5vw, 5rem);
+    padding-right: 1rem;
+  }
+
+  .visual {
+    min-height: auto;
+    margin: 0;
+  }
+
+  .vignette {
+    background:
+      linear-gradient(90deg, rgba(5, 11, 22, 0.94) 0%, rgba(5, 11, 22, 0.18) 38%, transparent 58%),
+      linear-gradient(180deg, transparent 60%, rgba(5, 11, 22, 0.5));
+  }
+}
+
+@media (max-width: 480px) {
+  .actions {
+    width: 100%;
+  }
+
+  .primary,
+  .secondary {
+    width: 100%;
+  }
+}

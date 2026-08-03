@@ -1,0 +1,197 @@
+.section {
+  padding: clamp(3.5rem, 8vw, 5.25rem) 0;
+  background:
+    radial-gradient(ellipse 50% 70% at 100% 0%, rgba(171, 12, 18, 0.22), transparent 55%),
+    linear-gradient(145deg, #01193b 0%, #000 55%, #050b16 100%);
+}
+
+.embedded {
+  padding-top: 0;
+  background: transparent;
+}
+
+.shell {
+  width: min(100% - 1.25rem, var(--max));
+  margin-inline: auto;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.visual {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+  min-height: 14rem;
+}
+
+.visualImage {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.visualOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 40%, rgba(5, 11, 22, 0.88)),
+    linear-gradient(90deg, rgba(5, 11, 22, 0.35), transparent 50%);
+  pointer-events: none;
+}
+
+.visualCaption {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  z-index: 1;
+}
+
+.visualMark {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  mix-blend-mode: lighten;
+  filter: brightness(1.2);
+}
+
+.visualCaption p {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+}
+
+.inner {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.copy {
+  max-width: 34rem;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.7rem;
+}
+
+.copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.2vw, 3.2rem);
+  line-height: 1;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+}
+
+.lede {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.form {
+  display: grid;
+  gap: 0.9rem;
+  padding: clamp(1.1rem, 3vw, 1.45rem);
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.fields {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.form input,
+.form select {
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--brand-white);
+  outline: none;
+  transition: border-color 180ms ease;
+}
+
+.form input:focus,
+.form select:focus {
+  border-color: rgba(171, 12, 18, 0.75);
+}
+
+.form select option {
+  color: #111;
+}
+
+.form button {
+  min-height: 3.05rem;
+  border: 0;
+  cursor: pointer;
+  background: var(--brand-red);
+  color: var(--brand-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: filter 180ms ease, transform 180ms ease;
+}
+
+.form button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.fine,
+.success {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.success {
+  color: var(--ink);
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+@media (min-width: 900px) {
+  .shell {
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+
+  .visual {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  .inner {
+    align-content: center;
+  }
+}
+
+@media (min-width: 1100px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
