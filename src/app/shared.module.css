@@ -1,0 +1,209 @@
+.section,
+.sectionAlt {
+  padding: clamp(3rem, 7vw, 4.8rem) 0;
+}
+
+.section {
+  background: #050b16;
+}
+
+.sectionAlt {
+  background:
+    radial-gradient(ellipse 50% 70% at 0% 0%, rgba(171, 12, 18, 0.14), transparent 55%),
+    linear-gradient(180deg, #0a1528, #050b16);
+  border-top: 1px solid var(--line);
+}
+
+.inner {
+  width: min(100% - 1.25rem, var(--max));
+  margin-inline: auto;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 1.4rem;
+}
+
+.triple {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.point {
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.point h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.point p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.aboutGrid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 0.7rem;
+}
+
+.aboutCopy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.8vw, 2.8rem);
+  line-height: 1.02;
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+}
+
+.aboutCopy p {
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 0.9rem;
+  max-width: 36rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.2rem;
+  margin-top: 0.4rem;
+  background: var(--brand-red);
+  color: var(--brand-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.mosaic {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.mosaicCell {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+.mosaicImage {
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.mosaicCell:hover .mosaicImage {
+  transform: scale(1.06);
+}
+
+.mosaicLogo {
+  grid-column: 1 / -1;
+  display: grid;
+  place-items: center;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+.mosaicLogo img {
+  mix-blend-mode: lighten;
+}
+
+.valueGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.valueCard {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.valueMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+.valueImage {
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.valueCard:hover .valueImage {
+  transform: scale(1.05);
+}
+
+.valueCard h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.valueCard p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (min-width: 860px) {
+  .triple {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .point {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    padding: 0 0 0 1.2rem;
+  }
+
+  .point:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .aboutGrid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.5rem;
+  }
+
+  .valueGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .valueMedia {
+    aspect-ratio: 1;
+  }
+}
