@@ -1,0 +1,18 @@
+/**
+ * Patriot Men's Health — brand colors
+ * Source: client hex codes (Aug 2026)
+ */
+
+:root {
+  /* Core palette */
+  --color-navy: #01193b;
+  --color-red: #ab0c12;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Aliases */
+  --brand-navy: var(--color-navy);
+  --brand-red: var(--color-red);
+  --brand-white: var(--color-white);
+  --brand-black: var(--color-black);
+}
