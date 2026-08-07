@@ -1,6 +1,9 @@
+import { Difference } from "@/components/Difference";
+import { FeaturedPromo } from "@/components/FeaturedPromo";
+import { HealthVideo } from "@/components/HealthVideo";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Products } from "@/components/Products";
+import { Programmes } from "@/components/Programmes";
 import { StartCTA } from "@/components/StartCTA";
 import { TrustBar } from "@/components/TrustBar";
 
@@ -9,11 +12,10 @@ export default function Home() {
     <>
       <Hero />
       <TrustBar />
-      <Products
-        limit={6}
-        heading="Built for strength, drive, and longevity."
-        lede="Nine physician-reviewed protocols. Start with the goal that matters most—then explore the full catalog."
-      />
+      <FeaturedPromo />
+      <Difference />
+      <HealthVideo />
+      <Programmes />
       <HowItWorks />
       <StartCTA />
     </>
