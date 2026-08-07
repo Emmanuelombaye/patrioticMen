@@ -1,0 +1,115 @@
+.section {
+  padding: var(--section-y-sm) 0;
+  background: #040914;
+}
+
+.inner {
+  width: min(100% - (var(--gutter) * 2), var(--max));
+  margin-inline: auto;
+}
+
+.card {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 50% 80% at 0% 50%, rgba(171, 12, 18, 0.18), transparent 60%),
+    linear-gradient(135deg, #01193b, #040914 55%, #0a1528);
+}
+
+.copy {
+  padding: clamp(1.35rem, 4vw, 2.2rem);
+  display: grid;
+  align-content: center;
+  gap: 0.8rem;
+}
+
+.badge {
+  width: fit-content;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-white);
+  background: var(--brand-red);
+  padding: 0.35rem 0.65rem;
+}
+
+.copy h2 {
+  font-family: var(--font-display);
+  font-size: var(--display-md);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.copy p:not(.badge) {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 34rem;
+  font-size: var(--text-lg);
+}
+
+.cta {
+  width: 100%;
+  margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  padding: 0 1.2rem;
+  background: var(--brand-red);
+  color: var(--brand-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  transition: filter 180ms ease, transform 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .cta:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+}
+
+.media {
+  position: relative;
+  min-height: 12rem;
+  aspect-ratio: 16 / 11;
+  background: #000;
+}
+
+.image {
+  object-fit: cover;
+}
+
+@media (min-width: 640px) {
+  .cta {
+    width: fit-content;
+  }
+}
+
+@media (min-width: 900px) {
+  .section {
+    padding: var(--section-y) 0;
+  }
+
+  .card {
+    grid-template-columns: 1.05fr 0.95fr;
+    min-height: 19rem;
+  }
+
+  .media {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+}

@@ -1,0 +1,121 @@
+.section {
+  padding: var(--section-y) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse 55% 60% at 0% 50%, rgba(171, 12, 18, 0.12), transparent 55%),
+    #040914;
+}
+
+.inner {
+  width: min(100% - (var(--gutter) * 2), var(--max));
+  margin-inline: auto;
+}
+
+.header {
+  max-width: 38rem;
+  margin-bottom: var(--stack-lg);
+}
+
+.kicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  margin-bottom: 0.75rem;
+}
+
+.header h2 {
+  font-family: var(--font-display);
+  font-size: var(--display-md);
+  line-height: 0.98;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+}
+
+.lede {
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: var(--text-lg);
+}
+
+.grid {
+  display: grid;
+  gap: 0;
+}
+
+.item {
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.item h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.item p {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 34rem;
+}
+
+.ctaWrap {
+  margin-top: var(--stack-lg);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--touch);
+  padding: 0 1.3rem;
+  background: var(--brand-red);
+  color: var(--brand-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: filter 180ms ease, transform 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .cta:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+}
+
+@media (min-width: 640px) {
+  .cta {
+    width: auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .item {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    padding: 0 0 0 1.25rem;
+  }
+
+  .item:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
