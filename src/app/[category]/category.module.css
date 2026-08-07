@@ -1,0 +1,412 @@
+.hero {
+  padding: calc(var(--header-h) + 1.75rem) 0 var(--section-y-sm);
+  background:
+    radial-gradient(ellipse 50% 70% at 90% 10%, rgba(171, 12, 18, 0.2), transparent 55%),
+    linear-gradient(160deg, #000 0%, #01193b 55%, #040914 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.heroInner,
+.wrap,
+.wrapNarrow {
+  width: min(100% - (var(--gutter) * 2), var(--max));
+  margin-inline: auto;
+}
+
+.wrapNarrow {
+  max-width: 46rem;
+}
+
+.heroInner {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.heroCopy h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 4.4rem);
+  line-height: 0.96;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  max-width: 12ch;
+}
+
+.lede {
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: clamp(1.02rem, 2.1vw, 1.12rem);
+  max-width: 36rem;
+  margin-bottom: 1.25rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  padding: 0 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  width: 100%;
+  transition: transform 180ms ease, filter 180ms ease, border-color 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .primary,
+  .secondary {
+    width: auto;
+  }
+}
+
+.primary {
+  background: var(--brand-red);
+  color: var(--brand-white);
+}
+
+.primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.secondary {
+  border: 1px solid var(--line);
+}
+
+.secondary:hover {
+  border-color: rgba(238, 242, 248, 0.4);
+  transform: translateY(-2px);
+}
+
+.accent {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(238, 242, 248, 0.55);
+}
+
+.heroMedia {
+  position: relative;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  background: #000;
+  overflow: hidden;
+  min-height: 16rem;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.included,
+.meds,
+.steps,
+.science,
+.faqs {
+  padding: var(--section-y) 0;
+}
+
+.included {
+  background: #040914;
+}
+
+.included h2,
+.medsHeader h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.8vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 1.4rem;
+}
+
+.includedGrid {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.includedItem {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.includedItem h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.includedItem p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.meds {
+  background:
+    radial-gradient(ellipse 45% 50% at 0% 0%, rgba(171, 12, 18, 0.12), transparent 55%),
+    linear-gradient(180deg, #0a1528, #040914);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.medsHeader {
+  max-width: 40rem;
+  margin-bottom: 1.8rem;
+}
+
+.medsHeader p:last-child {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.medsGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.medCard {
+  display: grid;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  height: 100%;
+  transition: border-color 220ms ease, transform 240ms ease;
+}
+
+.medCard:hover {
+  border-color: rgba(171, 12, 18, 0.6);
+  transform: translateY(-4px);
+}
+
+.medMedia {
+  position: relative;
+  aspect-ratio: 1;
+  background: #000;
+}
+
+.medImage {
+  object-fit: cover;
+}
+
+.medMeta {
+  padding: 1.15rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.medMeta h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.medMeta > p {
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.medMeta ul {
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.medMeta li {
+  position: relative;
+  padding-left: 0.9rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.medMeta li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  background: var(--brand-red);
+}
+
+.medCta {
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(238, 242, 248, 0.55);
+}
+
+.medCard:hover .medCta {
+  color: var(--brand-white);
+}
+
+.steps {
+  background: #040914;
+}
+
+.stepsGrid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.stepNum {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--brand-red);
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 0.55rem;
+}
+
+.step h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.step p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.science {
+  background: linear-gradient(180deg, #0a1528, #040914);
+  border-top: 1px solid var(--line);
+}
+
+.scienceGrid {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.scienceItem {
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.scienceItem h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.scienceItem p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.faqs {
+  background: #040914;
+  border-top: 1px solid var(--line);
+}
+
+.faqList {
+  display: grid;
+  gap: 1rem;
+}
+
+.faqItem {
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.faqItem h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.faqItem p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+@media (min-width: 800px) {
+  .includedGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .includedItem {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    padding: 0 0 0 1.2rem;
+  }
+
+  .includedItem:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .medsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stepsGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+
+  .scienceGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .scienceItem {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    padding: 0 0 0 1.2rem;
+  }
+
+  .scienceItem:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .heroInner {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+  }
+
+  .heroMedia {
+    aspect-ratio: 4 / 5;
+    min-height: 28rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .medsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

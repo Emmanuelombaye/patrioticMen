@@ -1,0 +1,144 @@
+.page {
+  background: #040914;
+}
+
+.block {
+  padding: clamp(2.4rem, 6vw, 3.6rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.block:nth-child(even) {
+  background: linear-gradient(180deg, rgba(10, 21, 40, 0.7), rgba(4, 9, 20, 0.7));
+}
+
+.inner {
+  width: min(100% - 1.5rem, var(--max));
+  margin-inline: auto;
+}
+
+.header {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: end;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-bottom: 0.55rem;
+}
+
+.header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.55rem;
+}
+
+.lede {
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 34rem;
+}
+
+.programmeLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.8rem;
+  padding: 0 1.1rem;
+  border: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  width: fit-content;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.programmeLink:hover {
+  border-color: rgba(171, 12, 18, 0.7);
+  background: rgba(171, 12, 18, 0.12);
+}
+
+.grid {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.9rem;
+  align-items: center;
+  border: 1px solid var(--line);
+  padding: 0.7rem;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 180ms ease, transform 200ms ease;
+}
+
+.card:hover {
+  border-color: rgba(171, 12, 18, 0.55);
+  transform: translateY(-2px);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 1;
+  background: #000;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.meta h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.meta p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin-bottom: 0.3rem;
+}
+
+.meta span {
+  color: rgba(238, 242, 248, 0.45);
+  font-size: 0.82rem;
+}
+
+@media (min-width: 800px) {
+  .header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .media {
+    aspect-ratio: 1;
+  }
+}

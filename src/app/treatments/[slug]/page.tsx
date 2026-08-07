@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProduct, products } from "@/data/products";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { getCategory, getProduct, products } from "@/data/products";
 import styles from "./product.module.css";
 
 type PageProps = {
@@ -29,8 +29,9 @@ export default async function ProductPage({ params }: PageProps) {
   const product = getProduct(slug);
   if (!product) notFound();
 
+  const category = getCategory(product.categoryId);
   const related = products
-    .filter((item) => item.category === product.category && item.id !== product.id)
+    .filter((item) => item.categoryId === product.categoryId && item.id !== product.id)
     .slice(0, 3);
 
   return (
@@ -48,7 +49,13 @@ export default async function ProductPage({ params }: PageProps) {
         </Reveal>
 
         <Reveal className={styles.copy} delay={0.08}>
-          <p className={styles.kicker}>{product.category}</p>
+          {category ? (
+            <Link href={`/${category.id}`} className={styles.kicker}>
+              {category.shortName}
+            </Link>
+          ) : (
+            <p className={styles.kicker}>{product.categoryId}</p>
+          )}
           <h1>{product.name}</h1>
           <p className={styles.tagline}>{product.tagline}</p>
           <p className={styles.format}>{product.format} · Rx Only</p>
@@ -57,9 +64,11 @@ export default async function ProductPage({ params }: PageProps) {
             <Link href="/start" className={styles.primary}>
               Start evaluation
             </Link>
-            <Link href="/treatments" className={styles.secondary}>
-              All treatments
-            </Link>
+            {category ? (
+              <Link href={`/${category.id}`} className={styles.secondary}>
+                View programme
+              </Link>
+            ) : null}
           </div>
         </Reveal>
       </div>
@@ -85,10 +94,50 @@ export default async function ProductPage({ params }: PageProps) {
         </Stagger>
       </div>
 
+      <section className={styles.info}>
+        <div className={styles.infoInner}>
+          <Reveal>
+            <h2>How it works</h2>
+            <p>{product.howItWorks}</p>
+          </Reveal>
+
+          <div className={styles.whoGrid}>
+            <Reveal>
+              <h3>Who it&apos;s for</h3>
+              <ul>
+                {product.whoItsFor.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <h3>Who it&apos;s not for</h3>
+              <ul>
+                {product.whoItsNotFor.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <div className={styles.faqBlock}>
+            <Reveal>
+              <h2>FAQs</h2>
+            </Reveal>
+            {product.faqs.map((faq) => (
+              <Reveal key={faq.q} className={styles.faqItem}>
+                <h3>{faq.q}</h3>
+                <p>{faq.a}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {related.length > 0 ? (
         <section className={styles.related}>
           <Reveal>
-            <h2>Related in {product.category}</h2>
+            <h2>Related in {category?.shortName ?? "this programme"}</h2>
           </Reveal>
           <Stagger className={styles.relatedGrid}>
             {related.map((item) => (
@@ -99,12 +148,12 @@ export default async function ProductPage({ params }: PageProps) {
                       src={item.image}
                       alt=""
                       fill
-                      sizes="(max-width: 700px) 100vw, 33vw"
+                      sizes="160px"
                       className={styles.relatedImage}
                     />
                   </div>
                   <div>
-                    <p>{item.category}</p>
+                    <p>{category?.shortName}</p>
                     <h3>{item.name}</h3>
                   </div>
                 </Link>
