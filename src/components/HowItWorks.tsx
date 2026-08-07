@@ -3,14 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { media } from "@/data/media";
-import { Reveal, Stagger, StaggerItem } from "./motion";
+import { Magnetic, Reveal, Stagger, StaggerItem, clipUp } from "./motion";
 import styles from "./HowItWorks.module.css";
 
 const steps = [
   {
     n: "01",
     title: "Pick your goal",
-    body: "Choose the treatment lane that matches what you want—weight, hormones, sexual health, recovery, or longevity.",
+    body: "Choose the programme that matches your goal—weight loss, hormones, sexual health, hair regrowth, or longevity & recovery.",
     image: media.lifestyle.pickGoal,
     imageAlt: "Man choosing his health goals",
   },
@@ -43,15 +43,19 @@ export function HowItWorks({ cta = false }: HowItWorksProps) {
             <p className={styles.kicker}>How it works</p>
             <h2 id="how-heading">Healthcare, the Patriot way.</h2>
             <p className={styles.lede}>
-              No waiting rooms. No awkward pharmacy lines. Just a clear path from
-              intake to discreet delivery.
+              No waiting rooms. No awkward pharmacy lines. Pick a programme,
+              complete an evaluation, get discreet delivery if prescribed.
             </p>
           </header>
         </Reveal>
 
+        <div className={styles.timeline} aria-hidden>
+          <div className={styles.timelineLine} />
+        </div>
+
         <Stagger className={styles.steps}>
           {steps.map((step) => (
-            <StaggerItem key={step.n} className={styles.step}>
+            <StaggerItem key={step.n} className={styles.step} variants={clipUp}>
               <div className={styles.stepMedia}>
                 <Image
                   src={step.image}
@@ -60,8 +64,9 @@ export function HowItWorks({ cta = false }: HowItWorksProps) {
                   sizes="(max-width: 900px) 100vw, 33vw"
                   className={styles.stepImage}
                 />
+                <span className={styles.stepVeil} />
+                <span className={styles.num}>{step.n}</span>
               </div>
-              <span className={styles.num}>{step.n}</span>
               <h3>{step.title}</h3>
               <p>{step.body}</p>
             </StaggerItem>
@@ -70,9 +75,11 @@ export function HowItWorks({ cta = false }: HowItWorksProps) {
 
         {cta ? (
           <Reveal className={styles.ctaWrap}>
-            <Link href="/start" className={styles.cta}>
-              Begin your evaluation
-            </Link>
+            <Magnetic>
+              <Link href="/start" className={styles.cta}>
+                Begin your evaluation
+              </Link>
+            </Magnetic>
           </Reveal>
         ) : null}
       </div>

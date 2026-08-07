@@ -1,36 +1,29 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(2.8rem, 7vw, 4.5rem) 0 clamp(2.2rem, 5vw, 3.2rem);
+  padding: calc(var(--header-h) + 1.75rem) 0 var(--section-y-sm);
   background:
-    radial-gradient(ellipse 55% 80% at 85% 10%, rgba(171, 12, 18, 0.22), transparent 55%),
-    linear-gradient(160deg, #000 0%, #01193b 55%, #050b16 100%);
+    radial-gradient(ellipse 55% 80% at 85% 10%, rgba(171, 12, 18, 0.24), transparent 55%),
+    linear-gradient(160deg, #000 0%, #01193b 55%, #040914 100%);
   border-bottom: 1px solid var(--line);
 }
 
 .glow {
   position: absolute;
-  width: 40%;
+  width: 42%;
   height: 70%;
   right: -5%;
   top: -20%;
-  background: radial-gradient(circle, rgba(1, 25, 59, 0.8), transparent 70%);
+  background: radial-gradient(circle, rgba(1, 25, 59, 0.85), transparent 70%);
   filter: blur(30px);
   pointer-events: none;
 }
 
 .inner {
   position: relative;
-  width: min(100% - 1.25rem, var(--max));
+  width: min(100% - (var(--gutter) * 2), var(--max));
   margin-inline: auto;
-  max-width: 42rem;
-}
-
-.withImage .inner {
-  max-width: none;
-  display: grid;
-  gap: 1.5rem;
-  align-items: center;
+  max-width: 44rem;
 }
 
 .copy {
@@ -43,64 +36,84 @@
   text-transform: uppercase;
   color: var(--brand-red);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: var(--text-xs);
   margin-bottom: 0.75rem;
 }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 7vw, 4.2rem);
-  line-height: 0.98;
+  font-size: var(--display-lg);
+  line-height: 0.96;
   font-weight: 700;
   margin-bottom: 0.9rem;
 }
 
 .lede {
   color: var(--muted);
-  line-height: 1.6;
-  font-size: clamp(1rem, 2.2vw, 1.1rem);
+  line-height: 1.65;
+  font-size: var(--text-lg);
 }
 
-.visual {
+.fullBleed {
   position: relative;
-  aspect-ratio: 4 / 5;
+  isolation: isolate;
+  min-height: min(68svh, 34rem);
+  display: grid;
+  align-items: end;
   overflow: hidden;
-  border: 1px solid var(--line);
   background: #000;
-  min-height: 16rem;
 }
 
-.image {
+.fullMedia {
+  position: absolute;
+  inset: -5% 0 -5%;
+  will-change: transform;
+}
+
+.fullImage {
   object-fit: cover;
-  object-position: center;
+  object-position: center 30%;
+  filter: saturate(0.9) contrast(1.08) brightness(0.68);
 }
 
-.vignette {
+.fullVeil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(5, 11, 22, 0.55));
+  background:
+    linear-gradient(180deg, rgba(4, 9, 20, 0.5) 0%, rgba(4, 9, 20, 0.25) 35%, rgba(4, 9, 20, 0.88) 100%),
+    linear-gradient(100deg, rgba(4, 9, 20, 0.75), transparent 60%);
   pointer-events: none;
+  z-index: 1;
+}
+
+.fullInner {
+  position: relative;
+  z-index: 2;
+  width: min(100% - (var(--gutter) * 2), var(--max));
+  margin: 0 auto;
+  padding: calc(var(--header-h) + 2.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  display: grid;
+  gap: 0.85rem;
+}
+
+.fullTitle {
+  font-family: var(--font-display);
+  font-size: var(--display-lg);
+  line-height: 0.94;
+  font-weight: 700;
+  max-width: 14ch;
+  text-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+}
+
+.fullLede {
+  max-width: 36rem;
+  color: rgba(238, 242, 248, 0.78);
+  line-height: 1.65;
+  font-size: var(--text-lg);
 }
 
 @media (min-width: 900px) {
-  .withImage {
-    padding-bottom: 0;
-  }
-
-  .withImage .inner {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 2rem;
-    min-height: 28rem;
-  }
-
-  .visual {
-    aspect-ratio: auto;
-    height: 100%;
-    min-height: 28rem;
-    border-right: 0;
-  }
-
-  .withImage .vignette {
-    background: linear-gradient(90deg, rgba(5, 11, 22, 0.55), transparent 40%);
+  .fullBleed {
+    min-height: min(78svh, 46rem);
   }
 }

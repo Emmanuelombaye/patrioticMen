@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { categories } from "@/data/products";
 import { media } from "@/data/media";
 import styles from "./Footer.module.css";
 
@@ -24,8 +25,16 @@ export function Footer() {
 
         <div className={styles.cols}>
           <div>
+            <h2>What we treat</h2>
+            {categories.map((category) => (
+              <Link key={category.id} href={`/${category.id}`}>
+                {category.shortName}
+              </Link>
+            ))}
+          </div>
+          <div>
             <h2>Navigate</h2>
-            <Link href="/treatments">Treatments</Link>
+            <Link href="/treatments">All treatments</Link>
             <Link href="/how-it-works">How it works</Link>
             <Link href="/about">About</Link>
             <Link href="/start">Get started</Link>

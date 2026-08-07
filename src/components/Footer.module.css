@@ -1,78 +1,84 @@
 .footer {
-  padding: 3.5rem 0 2rem;
+  position: relative;
+  padding: 4rem 0 2.2rem;
   border-top: 1px solid var(--line);
-  background: #000;
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 0%, rgba(171, 12, 18, 0.12), transparent 55%),
+    #000;
+  overflow: hidden;
 }
 
 .inner {
-  width: min(100% - 2rem, var(--max));
+  width: min(100% - 1.5rem, var(--max));
   margin-inline: auto;
   display: grid;
-  gap: 2rem;
+  gap: 2.2rem;
 }
 
 .brand {
-  max-width: 26rem;
+  max-width: 28rem;
 }
 
 .logo {
   width: min(220px, 70%);
   height: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
   mix-blend-mode: lighten;
   object-fit: contain;
 }
 
 .brand p {
   color: var(--muted);
-  line-height: 1.55;
-  font-size: 0.95rem;
+  line-height: 1.6;
+  font-size: 0.98rem;
 }
 
 .cols {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.6rem;
 }
 
 .cols h2 {
   font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.16em;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--brand-red);
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.8rem;
 }
 
 .cols a {
   display: block;
   color: var(--muted);
-  margin-bottom: 0.45rem;
-  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.96rem;
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 .cols a:hover {
   color: var(--brand-white);
+  transform: translateX(3px);
 }
 
 .legal {
-  width: min(100% - 2rem, var(--max));
-  margin: 2.5rem auto 0;
-  padding-top: 1.25rem;
+  width: min(100% - 1.5rem, var(--max));
+  margin: 2.8rem auto 0;
+  padding-top: 1.35rem;
   border-top: 1px solid var(--line);
   display: grid;
-  gap: 0.75rem;
-  color: rgba(232, 237, 245, 0.45);
+  gap: 0.8rem;
+  color: rgba(238, 242, 248, 0.42);
   font-size: 0.8rem;
   line-height: 1.55;
 }
 
 @media (min-width: 800px) {
   .inner {
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.1fr 1.6fr;
     align-items: start;
   }
 
   .cols {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr 0.9fr;
   }
 }

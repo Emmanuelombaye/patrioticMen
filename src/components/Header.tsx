@@ -5,24 +5,27 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { categories } from "@/data/products";
 import { media } from "@/data/media";
+import { ease } from "./motion";
 import styles from "./Header.module.css";
 
 const links = [
-  { href: "/treatments", label: "Treatments" },
+  { href: "/treatments", label: "All treatments" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/about", label: "About" },
-  { href: "/start", label: "Get started" },
 ];
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [programmesOpen, setProgrammesOpen] = useState(false);
   const reduce = useReducedMotion();
+  const isHome = pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -30,6 +33,7 @@ export function Header() {
 
   useEffect(() => {
     setOpen(false);
+    setProgrammesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -40,28 +44,65 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+    <header
+      className={[
+        styles.header,
+        scrolled || !isHome ? styles.solid : "",
+        open ? styles.open : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div className={styles.inner}>
         <Link href="/" className={styles.brand} aria-label="Patriot Men's Health home">
           <Image
             src={media.brand.mark}
             alt=""
-            width={40}
-            height={40}
+            width={36}
+            height={36}
             className={styles.mark}
             priority
           />
-          <span className={styles.wordmark}>
-            PATRIOT
-            <em>MEN&apos;S HEALTH</em>
-          </span>
+          <span className={styles.wordmark}>PATRIOT</span>
         </Link>
 
         <nav className={styles.nav} aria-label="Primary">
+          <div
+            className={styles.dropdown}
+            onMouseEnter={() => setProgrammesOpen(true)}
+            onMouseLeave={() => setProgrammesOpen(false)}
+          >
+            <button
+              type="button"
+              className={styles.dropdownBtn}
+              aria-expanded={programmesOpen}
+              onClick={() => setProgrammesOpen((value) => !value)}
+            >
+              What we treat
+            </button>
+            <AnimatePresence>
+              {programmesOpen ? (
+                <motion.div
+                  className={styles.menu}
+                  initial={reduce ? false : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 6 }}
+                  transition={{ duration: 0.2, ease }}
+                >
+                  {categories.map((category) => (
+                    <Link key={category.id} href={`/${category.id}`}>
+                      <span>{category.shortName}</span>
+                      <em>{category.headline}</em>
+                    </Link>
+                  ))}
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </div>
+
           {links.map((link) => {
             const active =
-              pathname === link.href ||
-              (link.href !== "/" && pathname.startsWith(link.href));
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
@@ -74,9 +115,11 @@ export function Header() {
           })}
         </nav>
 
-        <Link href="/start" className={styles.cta}>
-          Start evaluation
-        </Link>
+        <div className={styles.actions}>
+          <Link href="/start" className={styles.cta}>
+            Get started
+          </Link>
+        </div>
 
         <button
           type="button"
@@ -88,7 +131,6 @@ export function Header() {
         >
           <span />
           <span />
-          <span />
         </button>
       </div>
 
@@ -97,26 +139,26 @@ export function Header() {
           <motion.div
             id="mobile-nav"
             className={styles.mobile}
-            initial={reduce ? false : { opacity: 0, y: -12 }}
+            initial={reduce ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.28, ease }}
           >
-            <nav aria-label="Mobile">
-              {links.map((link, index) => (
-                <motion.div
-                  key={link.href}
-                  initial={reduce ? false : { opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * index, duration: 0.35 }}
-                >
-                  <Link href={link.href}>{link.label}</Link>
-                </motion.div>
+            <p className={styles.mobileLabel}>What we treat</p>
+            <nav aria-label="Programmes">
+              {categories.map((category) => (
+                <Link key={category.id} href={`/${category.id}`}>
+                  {category.shortName}
+                </Link>
               ))}
             </nav>
-            <Link href="/start" className={styles.mobileCta}>
-              Start free evaluation
-            </Link>
+            <nav aria-label="Mobile" className={styles.mobileSecondary}>
+              {[...links, { href: "/start", label: "Get started" }].map((link) => (
+                <Link key={link.href} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </motion.div>
         ) : null}
       </AnimatePresence>

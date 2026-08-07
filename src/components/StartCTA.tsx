@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { media } from "@/data/media";
-import { Reveal } from "./motion";
+import { Magnetic, Reveal, ease } from "./motion";
 import styles from "./StartCTA.module.css";
 
 type StartCTAProps = {
@@ -40,8 +40,8 @@ export function StartCTA({ embedded = false }: StartCTAProps) {
             <Image
               src={media.brand.mark}
               alt=""
-              width={36}
-              height={36}
+              width={40}
+              height={40}
               className={styles.visualMark}
             />
             <p>Physician-reviewed. Discreetly delivered.</p>
@@ -60,7 +60,7 @@ export function StartCTA({ embedded = false }: StartCTAProps) {
             </div>
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal delay={0.1}>
             <form className={styles.form} onSubmit={onSubmit}>
               <AnimatePresence mode="wait">
                 {submitted ? (
@@ -68,9 +68,10 @@ export function StartCTA({ embedded = false }: StartCTAProps) {
                     key="success"
                     className={styles.success}
                     role="status"
-                    initial={reduce ? false : { opacity: 0, y: 10 }}
+                    initial={reduce ? false : { opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
+                    transition={{ duration: 0.45, ease }}
                   >
                     Thanks — your evaluation request is ready for clinical review.
                     We&apos;ll follow up shortly.
@@ -79,9 +80,10 @@ export function StartCTA({ embedded = false }: StartCTAProps) {
                   <motion.div
                     key="fields"
                     className={styles.fields}
-                    initial={reduce ? false : { opacity: 0, y: 8 }}
+                    initial={reduce ? false : { opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4, ease }}
                   >
                     <label>
                       Full name
@@ -105,11 +107,12 @@ export function StartCTA({ embedded = false }: StartCTAProps) {
                         <option>Hormones</option>
                         <option>Sexual Health</option>
                         <option>Hair Regrowth</option>
-                        <option>Longevity</option>
-                        <option>Recovery</option>
+                        <option>Longevity & Recovery</option>
                       </select>
                     </label>
-                    <button type="submit">Start free evaluation</button>
+                    <Magnetic className={styles.submitWrap} strength={28}>
+                      <button type="submit">Start free evaluation</button>
+                    </Magnetic>
                     <p className={styles.fine}>
                       Rx Only. Treatment eligibility is determined solely by licensed
                       medical professionals. Results vary.
