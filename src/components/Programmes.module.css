@@ -12,8 +12,11 @@
 }
 
 .header {
-  max-width: 38rem;
+  max-width: none;
   margin-bottom: var(--stack-lg);
+  display: grid;
+  gap: 1rem;
+  align-items: end;
 }
 
 .kicker {
@@ -32,12 +35,35 @@
   line-height: 0.98;
   font-weight: 700;
   margin-bottom: 0.85rem;
+  max-width: 16ch;
 }
 
 .lede {
   color: var(--muted);
   line-height: 1.65;
   font-size: var(--text-lg);
+  max-width: 36rem;
+}
+
+.catalogLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  color: rgba(238, 242, 248, 0.78);
+  border-bottom: 1px solid rgba(238, 242, 248, 0.28);
+  padding-bottom: 0.2rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 180ms ease, border-color 180ms ease, gap 180ms ease;
+}
+
+.catalogLink:hover {
+  color: var(--brand-white);
+  border-bottom-color: var(--brand-red);
+  gap: 0.65rem;
 }
 
 .bento {
@@ -62,7 +88,7 @@
 
 .leadMedia {
   position: relative;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 5 / 4;
   background: #000;
   overflow: hidden;
 }
@@ -168,7 +194,7 @@
 
 .media {
   position: relative;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 5 / 4;
   background: #000;
   overflow: hidden;
 }
@@ -216,6 +242,15 @@
 }
 
 @media (min-width: 700px) {
+  .header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .leadMedia,
+  .media {
+    aspect-ratio: 16 / 11;
+  }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.15rem 1.25rem;

@@ -1,62 +1,74 @@
-import Image from "next/image";
 import Link from "next/link";
-import { categories } from "@/data/products";
-import { media } from "@/data/media";
+import { siteConfig } from "@/lib/seo";
 import styles from "./Footer.module.css";
 
+const legalLinks = [
+  { href: "/legal/terms", label: "Terms & conditions" },
+  { href: "/legal/privacy", label: "Privacy notice" },
+  { href: "/legal/cookies", label: "Cookie policy" },
+  { href: "/legal/complaint", label: "Make a complaint" },
+  { href: "/sitemap.xml", label: "Sitemap" },
+] as const;
+
+const badges = [
+  "Licensed U.S. providers",
+  "Discreet pharmacy fulfillment",
+] as const;
+
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <div className={styles.brand}>
-          <Image
-            src={media.brand.logo}
-            alt="Patriot Men's Health"
-            width={220}
-            height={80}
-            className={styles.logo}
-            style={{ width: "min(220px, 70%)", height: "auto" }}
-          />
-          <p>
-            Modern men&apos;s health guided by licensed U.S. providers.
-            Discreet shipping nationwide.
+        <div className={styles.top}>
+          <nav className={styles.legalNav} aria-label="Legal">
+            {legalLinks.map((link) => (
+              <Link key={link.href} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className={styles.badges}>
+            {badges.map((badge) => (
+              <span key={badge} className={styles.badge}>
+                {badge}
+              </span>
+            ))}
+            <div className={styles.rating}>
+              <span className={styles.ratingStar} aria-hidden>
+                ★
+              </span>
+              <div>
+                <p className={styles.ratingLabel}>Excellence</p>
+                <p className={styles.ratingMeta}>Member care standard</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.brandBlock}>
+          <p className={styles.wordmark} aria-label={siteConfig.name}>
+            patriot
           </p>
         </div>
 
-        <div className={styles.cols}>
-          <div>
-            <h2>What we treat</h2>
-            {categories.map((category) => (
-              <Link key={category.id} href={`/${category.id}`}>
-                {category.shortName}
-              </Link>
-            ))}
-          </div>
-          <div>
-            <h2>Navigate</h2>
-            <Link href="/treatments">All treatments</Link>
-            <Link href="/how-it-works">How it works</Link>
-            <Link href="/safety">Patient safety</Link>
-            <Link href="/guides">Advice & guides</Link>
-            <Link href="/about">About</Link>
-            <Link href="/start">Get started</Link>
-          </div>
-          <div>
-            <h2>Contact</h2>
-            <a href="mailto:jeff@patriotmensclinic.com">jeff@patriotmensclinic.com</a>
-            <a href="tel:+16024321616">+1 (602) 432-1616</a>
-          </div>
+        <div className={styles.fineprint}>
+          <p>
+            Copyright © {year} {siteConfig.name}. All rights reserved.{" "}
+            {siteConfig.name} provides administrative and educational services
+            connecting patients with licensed healthcare providers. Treatment
+            eligibility is determined solely by licensed medical professionals.
+            Results may vary and treatment is not guaranteed.
+          </p>
+          <p>
+            Contact{" "}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+            {" · "}
+            <a href={`tel:${siteConfig.phone}`}>{siteConfig.phoneDisplay}</a>
+          </p>
         </div>
-      </div>
-
-      <div className={styles.legal}>
-        <p>
-          Patriot Men&apos;s Health provides administrative and educational
-          services connecting patients with licensed healthcare providers.
-          Treatment eligibility is determined solely by licensed medical
-          professionals. Results may vary and treatment is not guaranteed.
-        </p>
-        <p>© {new Date().getFullYear()} Patriot Men&apos;s Health. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -11,7 +11,7 @@ import { ease } from "./motion";
 import styles from "./Header.module.css";
 
 const links = [
-  { href: "/treatments", label: "All treatments" },
+  { href: "/treatments", label: "Treatments" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/about", label: "About" },
 ];
@@ -25,7 +25,7 @@ export function Header() {
   const isHome = pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -47,7 +47,7 @@ export function Header() {
     <header
       className={[
         styles.header,
-        scrolled || !isHome ? styles.solid : "",
+        (scrolled || !isHome) && !open ? styles.solid : "",
         open ? styles.open : "",
       ]
         .filter(Boolean)
@@ -58,12 +58,12 @@ export function Header() {
           <Image
             src={media.brand.mark}
             alt=""
-            width={36}
-            height={36}
+            width={32}
+            height={32}
             className={styles.mark}
             priority
           />
-          <span className={styles.wordmark}>PATRIOT</span>
+          <span className={styles.wordmark}>patriot</span>
         </Link>
 
         <nav className={styles.nav} aria-label="Primary">
@@ -92,7 +92,7 @@ export function Header() {
                   {categories.map((category) => (
                     <Link key={category.id} href={`/${category.id}`}>
                       <span>{category.shortName}</span>
-                      <em>{category.headline}</em>
+                      <em>{category.tagline}</em>
                     </Link>
                   ))}
                 </motion.div>
@@ -118,6 +118,7 @@ export function Header() {
         <div className={styles.actions}>
           <Link href="/start" className={styles.cta}>
             Get started
+            <span aria-hidden>→</span>
           </Link>
         </div>
 
@@ -153,12 +154,15 @@ export function Header() {
               ))}
             </nav>
             <nav aria-label="Mobile" className={styles.mobileSecondary}>
-              {[...links, { href: "/start", label: "Get started" }].map((link) => (
+              {links.map((link) => (
                 <Link key={link.href} href={link.href}>
                   {link.label}
                 </Link>
               ))}
             </nav>
+            <Link href="/start" className={styles.mobileCta}>
+              Get started
+            </Link>
           </motion.div>
         ) : null}
       </AnimatePresence>

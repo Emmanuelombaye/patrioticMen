@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Difference } from "@/components/Difference";
 import { PageHero } from "@/components/PageHero";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { media } from "@/data/media";
@@ -127,6 +128,8 @@ export default function AboutPage() {
           </Stagger>
         </div>
       </section>
+
+      <Difference />
 
       <section className={styles.section}>
         <div className={styles.inner}>

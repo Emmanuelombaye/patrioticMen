@@ -13,6 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/start",
     "/safety",
     "/guides",
+    "/legal/terms",
+    "/legal/privacy",
+    "/legal/cookies",
+    "/legal/complaint",
   ].map((path) => ({
     url: absoluteUrl(path || "/"),
     lastModified: now,

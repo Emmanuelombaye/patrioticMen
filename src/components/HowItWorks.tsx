@@ -41,7 +41,7 @@ export function HowItWorks({ cta = false }: HowItWorksProps) {
         <Reveal>
           <header className={styles.header}>
             <p className={styles.kicker}>How it works</p>
-            <h2 id="how-heading">Healthcare, the Patriot way.</h2>
+            <h2 id="how-heading">From goal to doorstep.</h2>
             <p className={styles.lede}>
               No waiting rooms. No awkward pharmacy lines. Pick a programme,
               complete an evaluation, get discreet delivery if prescribed.

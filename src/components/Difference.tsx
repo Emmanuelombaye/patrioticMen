@@ -17,7 +17,7 @@ const points = [
     title: "Support that continues",
     body: "Care doesn’t stop at the prescription. Follow-up stays available for questions and adjustments.",
   },
-];
+] as const;
 
 export function Difference() {
   return (
@@ -28,8 +28,8 @@ export function Difference() {
             <p className={styles.kicker}>The Patriot difference</p>
             <h2 id="difference-heading">What proper care looks like</h2>
             <p className={styles.lede}>
-              For us, support doesn&apos;t stop at the prescription. Our clinicians review
-              every case and only prescribe what&apos;s clinically suitable for you.
+              Support doesn&apos;t stop at the prescription. Clinicians review every case
+              and only prescribe what&apos;s clinically suitable for you.
             </p>
           </header>
         </Reveal>

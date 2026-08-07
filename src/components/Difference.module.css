@@ -1,10 +1,7 @@
 .section {
   padding: var(--section-y) 0;
   border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background:
-    radial-gradient(ellipse 55% 60% at 0% 50%, rgba(171, 12, 18, 0.12), transparent 55%),
-    #040914;
+  background: #040914;
 }
 
 .inner {

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { HomeBridge } from "@/components/HomeBridge";
 import { HowItWorks } from "@/components/HowItWorks";
 import { PageHero } from "@/components/PageHero";
-import { StartCTA } from "@/components/StartCTA";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { media } from "@/data/media";
 import styles from "../shared.module.css";
@@ -76,7 +76,7 @@ export default function HowItWorksPage() {
           </Stagger>
         </div>
       </section>
-      <StartCTA />
+      <HomeBridge />
     </>
   );
 }

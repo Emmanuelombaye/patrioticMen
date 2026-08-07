@@ -3,7 +3,7 @@ import { Barlow_Condensed, Manrope } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
-import { WhyPatriot } from "@/components/WhyPatriot";
+import { SiteTrust } from "@/components/SiteTrust";
 import { siteConfig } from "@/lib/seo";
 import "./globals.css";
 
@@ -28,6 +28,7 @@ export const viewport: Viewport = {
   ],
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
   colorScheme: "dark",
 };
 
@@ -97,7 +98,7 @@ export default function RootLayout({
         <JsonLd />
         <Header />
         <main>{children}</main>
-        <WhyPatriot />
+        <SiteTrust />
         <Footer />
       </body>
     </html>

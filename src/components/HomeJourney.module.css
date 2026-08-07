@@ -1,0 +1,113 @@
+.section {
+  padding: var(--section-y) 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 0% 50%, rgba(171, 12, 18, 0.1), transparent 55%),
+    #040914;
+  border-top: 1px solid var(--line);
+}
+
+.inner {
+  width: min(100% - (var(--gutter) * 2), var(--max));
+  margin-inline: auto;
+}
+
+.header {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: var(--stack-lg);
+  align-items: end;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  margin-bottom: 0.65rem;
+}
+
+.header h2 {
+  font-family: var(--font-display);
+  font-size: var(--display-md);
+  line-height: 0.98;
+  font-weight: 700;
+  max-width: 14ch;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  color: rgba(238, 242, 248, 0.78);
+  border-bottom: 1px solid rgba(238, 242, 248, 0.28);
+  padding-bottom: 0.2rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 180ms ease, border-color 180ms ease, gap 180ms ease;
+}
+
+.more:hover {
+  color: var(--brand-white);
+  border-bottom-color: var(--brand-red);
+  gap: 0.65rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.step {
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.num {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--brand-red);
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 0.55rem;
+}
+
+.step h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.step p {
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 28rem;
+}
+
+@media (min-width: 800px) {
+  .header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .step {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    padding: 0 0 0 1.25rem;
+  }
+
+  .step:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+}

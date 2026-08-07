@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { FeaturedPromo } from "@/components/FeaturedPromo";
+import { HomeBridge } from "@/components/HomeBridge";
 import { PageHero } from "@/components/PageHero";
-import { StartCTA } from "@/components/StartCTA";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { categories, getProductsByCategory } from "@/data/products";
 import styles from "./treatments.module.css";
@@ -28,6 +29,8 @@ export default function TreatmentsPage() {
         title="Every protocol. Organised by goal."
         lede="Choose a programme lane—then compare the medications inside it. Same clinical standard across every option."
       />
+
+      <FeaturedPromo />
 
       <div className={styles.page}>
         {categories.map((category) => {
@@ -87,7 +90,7 @@ export default function TreatmentsPage() {
         })}
       </div>
 
-      <StartCTA />
+      <HomeBridge />
     </>
   );
 }

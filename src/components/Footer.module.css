@@ -1,84 +1,150 @@
 .footer {
-  position: relative;
-  padding: 4rem 0 2.2rem;
-  border-top: 1px solid var(--line);
-  background:
-    radial-gradient(ellipse 50% 60% at 50% 0%, rgba(171, 12, 18, 0.12), transparent 55%),
-    #000;
-  overflow: hidden;
+  --foot-ink: #1a1d24;
+  --foot-muted: rgba(26, 29, 36, 0.58);
+  --foot-line: rgba(26, 29, 36, 0.12);
+  --foot-surface: #f3f4f6;
+
+  background: var(--foot-surface);
+  color: var(--foot-ink);
+  padding: clamp(2rem, 4vw, 2.75rem) 0 calc(clamp(1.75rem, 3.5vw, 2.4rem) + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(1, 25, 59, 0.06);
 }
 
 .inner {
-  width: min(100% - 1.5rem, var(--max));
+  width: min(100% - (var(--gutter) * 2), var(--max));
   margin-inline: auto;
+}
+
+.top {
   display: grid;
-  gap: 2.2rem;
+  gap: 1.35rem;
+  padding-bottom: 1.5rem;
 }
 
-.brand {
-  max-width: 28rem;
+.legalNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.15rem;
 }
 
-.logo {
-  width: min(220px, 70%);
-  height: auto;
-  margin-bottom: 1.15rem;
-  mix-blend-mode: lighten;
-  object-fit: contain;
+.legalNav a {
+  color: var(--foot-muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: color 160ms ease;
 }
 
-.brand p {
-  color: var(--muted);
-  line-height: 1.6;
-  font-size: 0.98rem;
+.legalNav a:hover {
+  color: var(--brand-red);
 }
 
-.cols {
-  display: grid;
-  gap: 1.6rem;
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
 }
 
-.cols h2 {
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid rgba(26, 29, 36, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--foot-ink);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.2rem;
+  padding: 0.25rem 0.7rem 0.25rem 0.45rem;
+}
+
+.ratingStar {
+  display: inline-grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  background: #00b67a;
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.ratingLabel {
   font-family: var(--font-display);
   font-size: 0.82rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--brand-red);
-  margin-bottom: 0.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--foot-ink);
 }
 
-.cols a {
-  display: block;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-  font-size: 0.96rem;
-  transition: color 180ms ease, transform 180ms ease;
+.ratingMeta {
+  font-size: 0.72rem;
+  color: var(--foot-muted);
+  line-height: 1.2;
 }
 
-.cols a:hover {
-  color: var(--brand-white);
-  transform: translateX(3px);
+.brandBlock {
+  padding: 1.75rem 0 1.25rem;
+  border-top: 1px solid var(--foot-line);
+  overflow: hidden;
 }
 
-.legal {
-  width: min(100% - 1.5rem, var(--max));
-  margin: 2.8rem auto 0;
-  padding-top: 1.35rem;
-  border-top: 1px solid var(--line);
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.75rem, 22vw, 11rem);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+  color: var(--brand-navy);
+  user-select: none;
+  max-width: 100%;
+}
+
+.fineprint {
   display: grid;
-  gap: 0.8rem;
-  color: rgba(238, 242, 248, 0.42);
-  font-size: 0.8rem;
+  gap: 0.65rem;
+  max-width: 58rem;
+  color: var(--foot-muted);
+  font-size: 0.78rem;
   line-height: 1.55;
 }
 
-@media (min-width: 800px) {
-  .inner {
-    grid-template-columns: 1.1fr 1.6fr;
+.fineprint a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fineprint a:hover {
+  color: var(--brand-red);
+}
+
+@media (min-width: 900px) {
+  .top {
+    grid-template-columns: 1fr auto;
     align-items: start;
+    gap: 2rem;
+    padding-bottom: 1.75rem;
   }
 
-  .cols {
-    grid-template-columns: 1.1fr 0.9fr 0.9fr;
+  .badges {
+    justify-content: flex-end;
+    max-width: 28rem;
+  }
+
+  .brandBlock {
+    padding: 2.25rem 0 1.5rem;
   }
 }

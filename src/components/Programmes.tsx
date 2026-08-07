@@ -15,11 +15,17 @@ export function Programmes() {
       <div className={styles.inner}>
         <Reveal>
           <header className={styles.header}>
-            <p className={styles.kicker}>Proven solutions</p>
-            <h2 id="programmes-heading">Clinically-guided programmes</h2>
-            <p className={styles.lede}>
-              Tell us what you&apos;d like support with. We&apos;ll guide you through the rest.
-            </p>
+            <div>
+              <p className={styles.kicker}>Proven solutions</p>
+              <h2 id="programmes-heading">Clinically-guided programmes</h2>
+              <p className={styles.lede}>
+                Tell us what you&apos;d like support with. We&apos;ll guide you through the rest.
+              </p>
+            </div>
+            <Link href="/treatments" className={styles.catalogLink}>
+              View all treatments
+              <span aria-hidden>→</span>
+            </Link>
           </header>
         </Reveal>
 

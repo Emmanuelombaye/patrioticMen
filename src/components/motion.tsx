@@ -30,6 +30,12 @@ function useIsMobileMotion() {
   return mobile;
 }
 
+function useMotionReady() {
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+  return ready;
+}
+
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
   show: {
@@ -123,10 +129,12 @@ export function Reveal({
   amount = 0.18,
 }: RevealProps) {
   const reduce = useReducedMotion();
+  const ready = useMotionReady();
   const mobile = useIsMobileMotion();
-  const resolved = variants ?? (mobile ? fadeUpMobile : fadeBlur);
+  const shouldReduce = ready && !!reduce;
+  const resolved = variants ?? (ready && mobile ? fadeUpMobile : fadeUp);
 
-  if (reduce) {
+  if (shouldReduce) {
     return <div className={className}>{children}</div>;
   }
 
@@ -154,8 +162,10 @@ export function Stagger({
   variants?: Variants;
 }) {
   const reduce = useReducedMotion();
+  const ready = useMotionReady();
+  const shouldReduce = ready && !!reduce;
 
-  if (reduce) {
+  if (shouldReduce) {
     return <div className={className}>{children}</div>;
   }
 
@@ -181,11 +191,12 @@ export function StaggerItem({
   className?: string;
   variants?: Variants;
 }) {
+  const ready = useMotionReady();
   const mobile = useIsMobileMotion();
   return (
     <motion.div
       className={className}
-      variants={variants ?? (mobile ? fadeUpMobile : fadeUp)}
+      variants={variants ?? (ready && mobile ? fadeUpMobile : fadeUp)}
     >
       {children}
     </motion.div>
@@ -206,10 +217,12 @@ export function TextReveal({
   id?: string;
 }) {
   const reduce = useReducedMotion();
+  const ready = useMotionReady();
   const mobile = useIsMobileMotion();
   const words = text.split(" ");
+  const shouldReduce = ready && !!reduce;
 
-  if (reduce) {
+  if (shouldReduce) {
     return (
       <Tag id={id} className={className}>
         {text}
@@ -226,11 +239,11 @@ export function TextReveal({
         >
           <motion.span
             style={{ display: "inline-block", paddingRight: "0.28em" }}
-            initial={{ y: mobile ? "70%" : "110%", opacity: 0 }}
+            initial={{ y: ready && mobile ? "70%" : "110%", opacity: 0 }}
             animate={{ y: "0%", opacity: 1 }}
             transition={{
-              delay: delay + i * (mobile ? 0.05 : 0.07),
-              duration: mobile ? 0.55 : 0.8,
+              delay: delay + i * (ready && mobile ? 0.05 : 0.07),
+              duration: ready && mobile ? 0.55 : 0.8,
               ease,
             }}
           >
@@ -255,7 +268,9 @@ export function Parallax({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const ready = useMotionReady();
   const mobile = useIsMobileMotion();
+  const shouldReduce = ready && !!reduce;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -263,10 +278,10 @@ export function Parallax({
   const y = useTransform(
     scrollYProgress,
     [0, 1],
-    mobile ? [speed * 0.35, -speed * 0.35] : [speed, -speed],
+    ready && mobile ? [speed * 0.35, -speed * 0.35] : [speed, -speed],
   );
 
-  if (reduce) {
+  if (shouldReduce) {
     return (
       <div className={className} style={style}>
         {children}
@@ -292,10 +307,11 @@ export function Magnetic({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const ready = useMotionReady();
   const mobile = useIsMobileMotion();
 
   function onMove(e: MouseEvent<HTMLDivElement>) {
-    if (reduce || mobile || !ref.current) return;
+    if (!ready || reduce || mobile || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;

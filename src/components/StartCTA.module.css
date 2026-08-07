@@ -135,6 +135,7 @@
   color: var(--brand-white);
   border-radius: 0;
   appearance: none;
+  font-size: 1rem; /* keep ≥16px to avoid iOS focus zoom */
   transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
 }
 

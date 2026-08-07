@@ -231,6 +231,18 @@
   line-height: 1.55;
 }
 
+.legalProse {
+  display: grid;
+  gap: 1rem;
+  max-width: 46rem;
+}
+
+.legalProse p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: var(--text-lg);
+}
+
 .anchorBlock {
   scroll-margin-top: calc(var(--header-h) + 1rem);
   padding: 1.4rem 0;

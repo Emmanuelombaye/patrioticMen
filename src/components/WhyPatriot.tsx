@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Reveal, Stagger, StaggerItem } from "./motion";
 import styles from "./WhyPatriot.module.css";
@@ -36,24 +35,6 @@ const columns = [
   },
 ] as const;
 
-const utility = [
-  { label: "All treatments", href: "/treatments" },
-  { label: "Start evaluation", href: "/start" },
-  { label: "Advice & guides", href: "/guides" },
-  { label: "Help & support", href: "/guides#help" },
-] as const;
-
-const badges = [
-  {
-    src: "/trust/shield.svg",
-    label: "Licensed U.S. providers",
-  },
-  {
-    src: "/trust/pharmacy.svg",
-    label: "Discreet pharmacy fulfillment",
-  },
-] as const;
-
 export function WhyPatriot() {
   return (
     <section className={styles.section} aria-labelledby="why-patriot-heading">
@@ -82,48 +63,6 @@ export function WhyPatriot() {
             </StaggerItem>
           ))}
         </Stagger>
-
-        <div className={styles.bottom}>
-          <nav className={styles.utility} aria-label="Quick links">
-            {utility.map((link) => (
-              <Link key={link.label} href={link.href}>
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className={styles.trust}>
-            {badges.map((badge) => (
-              <div key={badge.label} className={styles.badge}>
-                <Image
-                  src={badge.src}
-                  alt=""
-                  width={40}
-                  height={40}
-                  className={styles.badgeIcon}
-                />
-                <span>{badge.label}</span>
-              </div>
-            ))}
-            <div className={styles.rating}>
-              <Image
-                src="/trust/excellence.svg"
-                alt=""
-                width={44}
-                height={44}
-                className={styles.ratingIcon}
-              />
-              <div className={styles.ratingCopy}>
-                <p className={styles.ratingLabel}>Excellence</p>
-                <div className={styles.stars} aria-hidden>
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i}>★</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
