@@ -30,12 +30,16 @@
   object-position: center 30%;
   opacity: 0;
   filter: saturate(0.88) contrast(1.06) brightness(0.68);
-  transition: opacity 700ms var(--ease-out);
+  transition: opacity 900ms var(--ease-out);
   pointer-events: none;
 }
 
 .bgVideoReady {
   opacity: 1;
+}
+
+.sceneRail {
+  display: none;
 }
 
 .veil {
@@ -180,6 +184,39 @@
 @media (min-width: 960px) {
   .bgImage {
     object-position: 70% center;
+  }
+
+  .sceneRail {
+    display: flex;
+    position: absolute;
+    left: max(var(--gutter), calc((100% - var(--max)) / 2));
+    bottom: 1.4rem;
+    z-index: 3;
+    gap: 0.55rem;
+  }
+
+  .sceneDot {
+    border: 1px solid rgba(238, 242, 248, 0.22);
+    background: rgba(4, 9, 20, 0.45);
+    backdrop-filter: blur(8px);
+    color: rgba(238, 242, 248, 0.62);
+    min-height: 2.2rem;
+    padding: 0 0.85rem;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      background 220ms var(--ease-out),
+      border-color 220ms var(--ease-out),
+      color 220ms var(--ease-out);
+  }
+
+  .sceneDotActive {
+    border-color: rgba(171, 12, 18, 0.75);
+    background: rgba(171, 12, 18, 0.28);
+    color: var(--brand-white);
   }
 
   .content {
