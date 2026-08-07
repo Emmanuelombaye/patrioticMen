@@ -174,17 +174,35 @@
 }
 
 .cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  justify-content: center;
+  gap: 0.55rem;
   width: fit-content;
-  margin-top: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0 1.35rem;
+  margin-top: 0.85rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(238, 242, 248, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  color: #ffffff;
   font-family: var(--font-display);
-  font-size: 0.76rem;
+  font-size: 0.8rem;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(238, 242, 248, 0.62);
-  transition: color 200ms ease, gap 200ms ease;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition:
+    background 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta svg {
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (hover: hover) {
@@ -193,8 +211,27 @@
   }
 
   .row:hover .cta {
-    color: var(--brand-white);
-    gap: 0.65rem;
+    border-color: rgba(171, 12, 18, 0.6);
+    background: linear-gradient(180deg, rgba(171, 12, 18, 0.25) 0%, rgba(171, 12, 18, 0.1) 100%);
+    box-shadow: 0 8px 22px rgba(171, 12, 18, 0.25);
+  }
+
+  .row:hover .cta svg {
+    transform: translateX(4px);
+  }
+
+  .cta:hover,
+  .row:hover .cta:hover {
+    background: linear-gradient(135deg, var(--brand-red) 0%, #c91118 100%) !important;
+    border-color: var(--brand-red) !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 32px rgba(171, 12, 18, 0.5) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  .cta:hover svg,
+  .row:hover .cta:hover svg {
+    transform: translateX(7px) !important;
   }
 
   .row:hover .index {

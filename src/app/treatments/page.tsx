@@ -80,6 +80,20 @@ export default function TreatmentsPage() {
                           <p>{product.tagline}</p>
                           <span>{product.format}</span>
                         </div>
+                        <div className={styles.cardFooter}>
+                          <span className={styles.medCta}>
+                            View details
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                              <path
+                                d="M3 8h10M9 4l4 4-4 4"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </span>
+                        </div>
                       </Link>
                     </StaggerItem>
                   ))}

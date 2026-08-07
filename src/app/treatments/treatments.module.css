@@ -148,6 +148,69 @@
   font-size: 0.82rem;
 }
 
+.cardFooter {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(238, 242, 248, 0.08);
+}
+
+.medCta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0 1.15rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(238, 242, 248, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition:
+    background 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.medCta svg {
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .medCta {
+  border-color: rgba(171, 12, 18, 0.6);
+  background: linear-gradient(180deg, rgba(171, 12, 18, 0.25) 0%, rgba(171, 12, 18, 0.1) 100%);
+  box-shadow: 0 8px 22px rgba(171, 12, 18, 0.25);
+}
+
+.card:hover .medCta svg {
+  transform: translateX(4px);
+}
+
+@media (hover: hover) {
+  .medCta:hover,
+  .card:hover .medCta:hover {
+    background: linear-gradient(135deg, var(--brand-red) 0%, #c91118 100%) !important;
+    border-color: var(--brand-red) !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 32px rgba(171, 12, 18, 0.5) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  .medCta:hover svg,
+  .card:hover .medCta:hover svg {
+    transform: translateX(7px) !important;
+  }
+}
+
 @media (min-width: 800px) {
   .banner {
     grid-template-columns: 1.1fr 1fr;
