@@ -1,0 +1,91 @@
+.trustpilotBar {
+  width: 100%;
+  background: #060c18;
+  border-top: 1px solid rgba(238, 242, 248, 0.08);
+  border-bottom: 1px solid rgba(238, 242, 248, 0.08);
+  padding: 0.85rem 1rem;
+}
+
+.inner {
+  width: min(100% - (var(--gutter) * 2), var(--max));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.4rem;
+  text-align: center;
+}
+
+.reviewText {
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.reviewText strong {
+  font-weight: 700;
+}
+
+.starsRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.starBox {
+  width: 1.55rem;
+  height: 1.55rem;
+  background: #00b67a;
+  color: #ffffff;
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.92rem;
+  line-height: 1;
+  border-radius: 2px;
+  user-select: none;
+}
+
+.starHalf {
+  background: linear-gradient(90deg, #00b67a 72%, rgba(238, 242, 248, 0.25) 72%);
+}
+
+.brandGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.starLogo {
+  flex-shrink: 0;
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 580px) {
+  .inner {
+    gap: 0.6rem 0.9rem;
+  }
+
+  .reviewText {
+    font-size: 0.92rem;
+  }
+
+  .starBox {
+    width: 1.4rem;
+    height: 1.4rem;
+    font-size: 0.85rem;
+  }
+
+  .brandName {
+    font-size: 1.05rem;
+  }
+}

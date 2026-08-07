@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { StartCTA } from "@/components/StartCTA";
+import { TrustpilotBanner } from "@/components/TrustpilotBanner";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import {
   categories,
@@ -108,6 +109,8 @@ export default async function CategoryPage({ params }: PageProps) {
           </Stagger>
         </div>
       </section>
+
+      <TrustpilotBanner />
 
       <section className={styles.meds} id="medications">
         <div className={styles.wrap}>

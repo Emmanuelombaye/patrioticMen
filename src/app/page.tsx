@@ -3,6 +3,7 @@ import { HomeBridge } from "@/components/HomeBridge";
 import { HomeJourney } from "@/components/HomeJourney";
 import { Programmes } from "@/components/Programmes";
 import { TrustBar } from "@/components/TrustBar";
+import { TrustpilotBanner } from "@/components/TrustpilotBanner";
 
 /**
  * Home is a gateway — not a dump of every section.
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <TrustBar />
+      <TrustpilotBanner />
       <Programmes />
       <HomeJourney />
       <HomeBridge />

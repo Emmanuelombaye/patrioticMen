@@ -41,8 +41,8 @@ export function Footer() {
                 ★
               </span>
               <div>
-                <p className={styles.ratingLabel}>Excellence</p>
-                <p className={styles.ratingMeta}>Member care standard</p>
+                <p className={styles.ratingLabel}>★ Trustpilot 4.9/5</p>
+                <p className={styles.ratingMeta}>Over 35,220 verified reviews</p>
               </div>
             </div>
           </div>
