@@ -506,6 +506,91 @@
   transform: scale(0.985);
 }
 
+.mobileFeatureCard {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(238, 242, 248, 0.12);
+  background: rgba(12, 20, 36, 0.7);
+  text-decoration: none;
+  transition: border-color 200ms ease, transform 180ms ease;
+}
+
+.mobileFeatureCard:active {
+  transform: scale(0.985);
+  border-color: rgba(171, 12, 18, 0.6);
+}
+
+.mobileFeatureMedia {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+}
+
+.mobileFeatureImg {
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.mobileFeatureOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 9, 20, 0.1) 0%, rgba(4, 9, 20, 0.85) 100%);
+}
+
+.mobileFeatureBadge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.18rem 0.5rem;
+  background: rgba(171, 12, 18, 0.9);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
+}
+
+.mobileFeatureBody {
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileFeatureTitle {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--brand-white);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.mobileFeatureText {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.mobileFeatureCta {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--brand-white);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
 @media (min-width: 920px) {
   .inner {
     grid-template-columns: auto 1fr auto;

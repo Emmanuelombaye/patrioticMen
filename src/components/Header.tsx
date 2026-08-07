@@ -288,6 +288,29 @@ export function Header() {
                 <Link href="/safety">Safety & Regulations</Link>
                 <Link href="/guides">Health Guides & Advice</Link>
               </nav>
+
+              <Link href="/start" className={styles.mobileFeatureCard}>
+                <div className={styles.mobileFeatureMedia}>
+                  <Image
+                    src={media.lifestyle.whyPatriotCard}
+                    alt="Patriot Clinical Care"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 360px"
+                    className={styles.mobileFeatureImg}
+                  />
+                  <div className={styles.mobileFeatureOverlay} />
+                  <span className={styles.mobileFeatureBadge}>Clinical Care</span>
+                </div>
+                <div className={styles.mobileFeatureBody}>
+                  <h4 className={styles.mobileFeatureTitle}>Why 10,000+ Men Choose Patriot</h4>
+                  <p className={styles.mobileFeatureText}>
+                    100% online doctor consults, FDA-approved care & discreet shipping.
+                  </p>
+                  <span className={styles.mobileFeatureCta}>
+                    Start Free Consult <span aria-hidden>→</span>
+                  </span>
+                </div>
+              </Link>
             </div>
 
             <nav aria-label="Mobile" className={styles.mobileSecondary}>
