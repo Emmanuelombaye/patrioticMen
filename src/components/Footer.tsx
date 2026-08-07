@@ -49,9 +49,25 @@ export function Footer() {
         </div>
 
         <div className={styles.brandBlock}>
-          <p className={styles.wordmark} aria-label={siteConfig.name}>
-            patriot
-          </p>
+          <svg
+            viewBox="0 0 1000 220"
+            width="100%"
+            className={styles.wordmarkSvg}
+            aria-label={siteConfig.name}
+            role="img"
+          >
+            <text
+              x="50%"
+              y="74%"
+              textAnchor="middle"
+              fill="#ffffff"
+              textLength="960"
+              lengthAdjust="spacingAndGlyphs"
+              className={styles.wordmarkText}
+            >
+              patriot
+            </text>
+          </svg>
         </div>
 
         <div className={styles.fineprint}>
