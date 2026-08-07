@@ -5,11 +5,13 @@ export const media = {
     logo: "/brand/logo.jpeg",
   },
   lifestyle: {
+    homeHero: "/lifestyle/home-hero.png",
     pickGoal: "/lifestyle/how-pick-goal.jpg",
     evaluation: "/lifestyle/how-evaluation.jpg",
     delivery: "/lifestyle/how-delivery.jpg",
     followUp: "/lifestyle/how-followup.jpg",
     aboutHero: "/lifestyle/about-hero.jpg",
     startHero: "/lifestyle/start-hero.jpg",
+    healthVideo: "/video/health.mp4",
   },
 } as const;
