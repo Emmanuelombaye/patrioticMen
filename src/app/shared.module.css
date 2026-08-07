@@ -1,6 +1,6 @@
 .section,
 .sectionAlt {
-  padding: clamp(3rem, 7vw, 4.8rem) 0;
+  padding: clamp(3.4rem, 8vw, 5.4rem) 0;
 }
 
 .section {
@@ -145,7 +145,12 @@
 
 .valueCard {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.85rem;
+  transition: transform 280ms var(--ease-out);
+}
+
+.valueCard:hover {
+  transform: translateY(-4px);
 }
 
 .valueMedia {
@@ -158,11 +163,11 @@
 
 .valueImage {
   object-fit: cover;
-  transition: transform 500ms ease;
+  transition: transform 700ms var(--ease-out);
 }
 
 .valueCard:hover .valueImage {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .valueCard h3 {
