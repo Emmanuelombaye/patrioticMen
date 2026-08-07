@@ -184,34 +184,43 @@
 
 .medsGrid {
   display: grid;
-  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
 }
 
 .medCard {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   height: 100%;
-  background: transparent;
-  transition: transform 240ms ease;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(238, 242, 248, 0.1);
+  background: rgba(8, 14, 26, 0.6);
+  padding: 0.85rem;
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
 }
 
 .medCard:hover {
   transform: translateY(-4px);
+  border-color: rgba(171, 12, 18, 0.5);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
 }
 
 .medMedia {
   position: relative;
-  aspect-ratio: 1;
+  width: 100%;
+  aspect-ratio: 16 / 11;
   background:
     radial-gradient(ellipse 60% 50% at 50% 70%, rgba(171, 12, 18, 0.16), transparent 65%),
     linear-gradient(160deg, #121821, #05080f 55%, #000);
   overflow: hidden;
+  border-radius: 0.45rem;
 }
 
 .medStudio {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(4, 9, 20, 0.35));
+  background: linear-gradient(180deg, transparent 60%, rgba(4, 9, 20, 0.4));
   pointer-events: none;
 }
 
@@ -225,58 +234,80 @@
 }
 
 .medMeta {
-  padding: 1rem 0 0.25rem;
-  display: grid;
-  gap: 0.5rem;
+  padding: 1.1rem 0.2rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .medMeta h3 {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: 800;
+  color: var(--brand-white);
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
 }
 
-.medMeta > p {
+.medTagline {
   color: var(--muted);
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.medMeta ul {
-  list-style: none;
-  display: grid;
-  gap: 0.4rem;
-}
-
-.medMeta li {
-  position: relative;
-  padding-left: 0.9rem;
-  color: var(--muted);
-  font-size: 0.9rem;
   line-height: 1.45;
+  font-size: 0.92rem;
+  min-height: 2.7rem;
+  margin-bottom: 0.85rem;
 }
 
-.medMeta li::before {
+.medBenefits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+  margin-bottom: 1.2rem;
+  padding: 0;
+}
+
+.medBenefits li {
+  position: relative;
+  padding-left: 0.95rem;
+  color: rgba(238, 242, 248, 0.78);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.medBenefits li::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0.45rem;
-  width: 0.35rem;
-  height: 0.35rem;
+  width: 0.32rem;
+  height: 0.32rem;
   background: var(--brand-red);
+  border-radius: 0.05rem;
+}
+
+.medFooter {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(238, 242, 248, 0.08);
 }
 
 .medCta {
-  margin-top: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-family: var(--font-display);
   font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(238, 242, 248, 0.55);
+  color: rgba(238, 242, 248, 0.65);
+  transition: color 180ms ease, gap 180ms ease;
 }
 
 .medCard:hover .medCta {
   color: var(--brand-white);
+  gap: 0.55rem;
 }
 
 .steps {
@@ -364,6 +395,13 @@
   line-height: 1.65;
 }
 
+@media (min-width: 640px) {
+  .medsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 @media (min-width: 800px) {
   .includedGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -379,50 +417,6 @@
   .includedItem:nth-child(odd) {
     border-left: 0;
     padding-left: 0;
-  }
-
-  .medsTwo {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .medsOne .medCard {
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 1.75rem;
-    align-items: center;
-  }
-
-  .medsOne .medMedia {
-    aspect-ratio: 4 / 5;
-    min-height: 26rem;
-  }
-
-  .medsOne .medMeta {
-    padding-top: 0;
-  }
-
-  .medsOne .medMeta h3 {
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-  }
-
-  .medsMany {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.35rem;
-  }
-
-  .medsMany .medFeatured {
-    grid-column: 1 / -1;
-  }
-
-  .medsMany .medFeatured .medCard {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .medsMany .medFeatured .medMedia {
-    aspect-ratio: auto;
-    min-height: 22rem;
   }
 
   .stepsGrid {
@@ -459,24 +453,9 @@
   }
 }
 
-@media (min-width: 1100px) {
-  .medsMany {
-    grid-template-columns: 1.2fr 1fr 1fr;
-  }
-
-  .medsMany .medFeatured {
-    grid-column: 1;
-    grid-row: 1 / 3;
-  }
-
-  .medsMany .medFeatured .medCard {
-    grid-template-columns: 1fr;
-    height: 100%;
-  }
-
-  .medsMany .medFeatured .medMedia {
-    min-height: 0;
-    flex: 1;
-    aspect-ratio: 1;
+@media (min-width: 1024px) {
+  .medsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
   }
 }

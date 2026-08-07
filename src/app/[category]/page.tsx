@@ -122,37 +122,42 @@ export default async function CategoryPage({ params }: PageProps) {
             </header>
           </Reveal>
 
-          <Stagger
-            className={`${styles.medsGrid} ${
-              meds.length === 1
-                ? styles.medsOne
-                : meds.length === 2
-                  ? styles.medsTwo
-                  : styles.medsMany
-            }`}
-          >
-            {meds.map((product, index) => (
-              <StaggerItem key={product.id} className={index === 0 ? styles.medFeatured : undefined}>
+          <Stagger className={styles.medsGrid}>
+            {meds.map((product) => (
+              <StaggerItem key={product.id}>
                 <Link href={`/treatments/${product.id}`} className={styles.medCard}>
                   <div className={styles.medMedia}>
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      sizes="(max-width: 700px) 100vw, 40vw"
+                      sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                       className={styles.medImage}
                     />
                     <span className={styles.medStudio} aria-hidden />
                   </div>
                   <div className={styles.medMeta}>
                     <h3>{product.name}</h3>
-                    <p>{product.tagline}</p>
-                    <ul>
+                    <p className={styles.medTagline}>{product.tagline}</p>
+                    <ul className={styles.medBenefits}>
                       {product.benefits.slice(0, 3).map((benefit) => (
                         <li key={benefit}>{benefit}</li>
                       ))}
                     </ul>
-                    <span className={styles.medCta}>View details</span>
+                    <div className={styles.medFooter}>
+                      <span className={styles.medCta}>
+                        View details
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                          <path
+                            d="M3 8h10M9 4l4 4-4 4"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </Link>
               </StaggerItem>
