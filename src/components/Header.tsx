@@ -25,6 +25,17 @@ export function Header() {
   const reduce = useReducedMotion();
   const isHome = pathname === "/";
 
+  function handleNavClick(href?: string) {
+    setOpen(false);
+    setProgrammesOpen(false);
+    setWhyPatriotOpen(false);
+    if (typeof window !== "undefined") {
+      if (!href || !href.includes("#")) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  }
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -56,7 +67,12 @@ export function Header() {
         .join(" ")}
     >
       <div className={styles.inner}>
-        <Link href="/" className={styles.brand} aria-label="Patriot Men's Health home">
+        <Link
+          href="/"
+          className={styles.brand}
+          aria-label="Patriot Men's Health home"
+          onClick={() => handleNavClick("/")}
+        >
           <Image
             src={media.brand.mark}
             alt=""
@@ -102,7 +118,11 @@ export function Header() {
                   transition={{ duration: 0.2, ease }}
                 >
                   {categories.map((category) => (
-                    <Link key={category.id} href={`/${category.id}`}>
+                    <Link
+                      key={category.id}
+                      href={`/${category.id}`}
+                      onClick={() => handleNavClick(`/${category.id}`)}
+                    >
                       <span>{category.shortName}</span>
                       <em>{category.tagline}</em>
                     </Link>
@@ -147,15 +167,27 @@ export function Header() {
                   <div className={styles.megaGrid}>
                     <div className={styles.megaCol}>
                       <p className={styles.megaHeading}>Our Approach</p>
-                      <Link href="/about" className={styles.megaItem}>
+                      <Link
+                        href="/about"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/about")}
+                      >
                         <span className={styles.megaTitle}>About Patriot</span>
                         <span className={styles.megaDesc}>Our mission, clinical ethos & modern healthcare standards</span>
                       </Link>
-                      <Link href="/how-it-works" className={styles.megaItem}>
+                      <Link
+                        href="/how-it-works"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/how-it-works")}
+                      >
                         <span className={styles.megaTitle}>How Care Works</span>
                         <span className={styles.megaDesc}>3-step online consultation, prescription & free delivery</span>
                       </Link>
-                      <Link href="/about#experts" className={styles.megaItem}>
+                      <Link
+                        href="/about#experts"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/about#experts")}
+                      >
                         <span className={styles.megaTitle}>Clinician Team</span>
                         <span className={styles.megaDesc}>Board-certified US clinicians specializing in men's health</span>
                       </Link>
@@ -163,15 +195,27 @@ export function Header() {
 
                     <div className={styles.megaCol}>
                       <p className={styles.megaHeading}>Safety & Quality</p>
-                      <Link href="/safety" className={styles.megaItem}>
+                      <Link
+                        href="/safety"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/safety")}
+                      >
                         <span className={styles.megaTitle}>Regulated Standards</span>
                         <span className={styles.megaDesc}>FDA-approved medications & certified pharmacy partners</span>
                       </Link>
-                      <Link href="/safety#prescribing" className={styles.megaItem}>
+                      <Link
+                        href="/safety#prescribing"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/safety#prescribing")}
+                      >
                         <span className={styles.megaTitle}>Safe Prescribing</span>
                         <span className={styles.megaDesc}>Thorough medical evaluations & ongoing physician monitoring</span>
                       </Link>
-                      <Link href="/safety#pharmacy" className={styles.megaItem}>
+                      <Link
+                        href="/safety#pharmacy"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/safety#pharmacy")}
+                      >
                         <span className={styles.megaTitle}>Discreet Fulfillment</span>
                         <span className={styles.megaDesc}>Plain unbranded packaging delivered directly to your door</span>
                       </Link>
@@ -179,22 +223,38 @@ export function Header() {
 
                     <div className={styles.megaCol}>
                       <p className={styles.megaHeading}>Health & Advice</p>
-                      <Link href="/guides" className={styles.megaItem}>
+                      <Link
+                        href="/guides"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/guides")}
+                      >
                         <span className={styles.megaTitle}>Evidence-Based Guides</span>
                         <span className={styles.megaDesc}>Clinical insights on testosterone, hair loss & longevity</span>
                       </Link>
-                      <Link href="/guides#help" className={styles.megaItem}>
+                      <Link
+                        href="/guides#help"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/guides#help")}
+                      >
                         <span className={styles.megaTitle}>Help & Support</span>
                         <span className={styles.megaDesc}>FAQs, dosing guidance & direct clinician messaging</span>
                       </Link>
-                      <Link href="/treatments" className={styles.megaItem}>
+                      <Link
+                        href="/treatments"
+                        className={styles.megaItem}
+                        onClick={() => handleNavClick("/treatments")}
+                      >
                         <span className={styles.megaTitle}>All Treatments</span>
                         <span className={styles.megaDesc}>Explore our full catalog of clinical formulations</span>
                       </Link>
                     </div>
 
                     <div className={styles.megaCardCol}>
-                      <Link href="/start" className={styles.megaCard}>
+                      <Link
+                        href="/start"
+                        className={styles.megaCard}
+                        onClick={() => handleNavClick("/start")}
+                      >
                         <div className={styles.megaCardMedia}>
                           <Image
                             src={media.lifestyle.whyPatriotCard}
@@ -231,6 +291,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={active ? styles.active : undefined}
+                onClick={() => handleNavClick(link.href)}
               >
                 {link.label}
               </Link>
@@ -239,7 +300,11 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <Link href="/start" className={styles.cta}>
+          <Link
+            href="/start"
+            className={styles.cta}
+            onClick={() => handleNavClick("/start")}
+          >
             Get started
             <span aria-hidden>→</span>
           </Link>
@@ -272,7 +337,11 @@ export function Header() {
               <p className={styles.mobileLabel}>What we treat</p>
               <nav aria-label="Programmes">
                 {categories.map((category) => (
-                  <Link key={category.id} href={`/${category.id}`}>
+                  <Link
+                    key={category.id}
+                    href={`/${category.id}`}
+                    onClick={() => handleNavClick(`/${category.id}`)}
+                  >
                     <span>{category.shortName}</span>
                     <span className={styles.mobileSub}>{category.tagline}</span>
                   </Link>
@@ -283,13 +352,25 @@ export function Header() {
             <div className={styles.mobileBlock}>
               <p className={styles.mobileLabel}>Why Patriot</p>
               <nav aria-label="Why Patriot Mobile">
-                <Link href="/about">About Patriot</Link>
-                <Link href="/how-it-works">How care works</Link>
-                <Link href="/safety">Safety & Regulations</Link>
-                <Link href="/guides">Health Guides & Advice</Link>
+                <Link href="/about" onClick={() => handleNavClick("/about")}>
+                  About Patriot
+                </Link>
+                <Link href="/how-it-works" onClick={() => handleNavClick("/how-it-works")}>
+                  How care works
+                </Link>
+                <Link href="/safety" onClick={() => handleNavClick("/safety")}>
+                  Safety & Regulations
+                </Link>
+                <Link href="/guides" onClick={() => handleNavClick("/guides")}>
+                  Health Guides & Advice
+                </Link>
               </nav>
 
-              <Link href="/start" className={styles.mobileFeatureCard}>
+              <Link
+                href="/start"
+                className={styles.mobileFeatureCard}
+                onClick={() => handleNavClick("/start")}
+              >
                 <div className={styles.mobileFeatureMedia}>
                   <Image
                     src={media.lifestyle.whyPatriotCard}
@@ -315,12 +396,20 @@ export function Header() {
 
             <nav aria-label="Mobile" className={styles.mobileSecondary}>
               {links.map((link) => (
-                <Link key={link.href} href={link.href}>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                >
                   {link.label}
                 </Link>
               ))}
             </nav>
-            <Link href="/start" className={styles.mobileCta}>
+            <Link
+              href="/start"
+              className={styles.mobileCta}
+              onClick={() => handleNavClick("/start")}
+            >
               Get started
             </Link>
           </motion.div>
