@@ -12,14 +12,16 @@ type ProductsProps = {
   lede?: string;
   showHeader?: boolean;
   limit?: number;
+  featured?: boolean;
 };
 
 export function Products({
   items = products,
-  heading = "All treatments",
-  lede = "Browse every physician-reviewed protocol—organized the way you actually choose care.",
+  heading = "Physician-reviewed treatments",
+  lede = "Original formulations, arranged by programme—so you can scan the catalogue the way a clinician would.",
   showHeader = true,
   limit,
+  featured = true,
 }: ProductsProps) {
   const list = typeof limit === "number" ? items.slice(0, limit) : items;
 
@@ -30,7 +32,7 @@ export function Products({
         {showHeader ? (
           <Reveal>
             <header className={styles.header}>
-              <p className={styles.kicker}>Treatments</p>
+              <p className={styles.kicker}>Medications</p>
               <h2 id="treatments-heading">{heading}</h2>
               <p className={styles.lede}>{lede}</p>
             </header>
@@ -38,25 +40,37 @@ export function Products({
         ) : null}
 
         <Stagger className={styles.grid}>
-          {list.map((product) => {
+          {list.map((product, index) => {
             const category = getCategory(product.categoryId);
+            const isFeatured = featured && index === 0;
             return (
-              <StaggerItem key={product.id} variants={scaleIn}>
+              <StaggerItem
+                key={product.id}
+                variants={scaleIn}
+                className={isFeatured ? styles.featured : undefined}
+              >
                 <Link href={`/treatments/${product.id}`} className={styles.item}>
                   <div className={styles.media}>
                     <Image
                       src={product.image}
                       alt={`${product.name} product`}
                       fill
-                      sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                      sizes={
+                        isFeatured
+                          ? "(max-width: 700px) 100vw, 55vw"
+                          : "(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                      }
                       className={styles.image}
+                      priority={isFeatured}
                     />
-                    <span className={styles.shine} aria-hidden />
-                    <span className={styles.mediaVeil} aria-hidden />
+                    <span className={styles.studio} aria-hidden />
                   </div>
                   <div className={styles.meta}>
-                    <span className={styles.category}>{category?.shortName ?? product.categoryId}</span>
+                    <span className={styles.category}>
+                      {category?.shortName ?? product.categoryId}
+                    </span>
                     <h3>{product.name}</h3>
+                    {isFeatured ? <p className={styles.summary}>{product.tagline}</p> : null}
                     <span className={styles.format}>{product.format}</span>
                     <span className={styles.ctaHint}>
                       Explore

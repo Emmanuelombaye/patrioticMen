@@ -28,7 +28,17 @@ export default function TreatmentsPage() {
           return (
             <section key={category.id} className={styles.block} id={category.id}>
               <div className={styles.inner}>
-                <Reveal>
+                <Reveal className={styles.banner}>
+                  <div className={styles.bannerMedia}>
+                    <Image
+                      src={category.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 900px) 100vw, 40vw"
+                      className={styles.bannerImage}
+                    />
+                    <span className={styles.bannerVeil} aria-hidden />
+                  </div>
                   <header className={styles.header}>
                     <div>
                       <p className={styles.kicker}>{category.shortName}</p>
@@ -50,9 +60,10 @@ export default function TreatmentsPage() {
                             src={product.image}
                             alt={product.name}
                             fill
-                            sizes="(max-width: 700px) 100vw, 33vw"
+                            sizes="(max-width: 700px) 100vw, 28vw"
                             className={styles.image}
                           />
+                          <span className={styles.studio} aria-hidden />
                         </div>
                         <div className={styles.meta}>
                           <h3>{product.name}</h3>

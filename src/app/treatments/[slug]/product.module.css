@@ -13,8 +13,9 @@
 .media {
   position: relative;
   aspect-ratio: 1 / 1;
-  background: #000;
-  border: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 68%, rgba(171, 12, 18, 0.2), transparent 65%),
+    linear-gradient(160deg, #141b26, #060a12 55%, #000);
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
 }
@@ -25,7 +26,7 @@
 }
 
 .media:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .copy {
@@ -177,21 +178,21 @@
   grid-template-columns: 5.5rem 1fr;
   gap: 0.9rem;
   align-items: center;
-  border: 1px solid var(--line);
-  padding: 0.65rem;
-  background: rgba(255, 255, 255, 0.02);
-  transition: border-color 180ms ease, transform 200ms ease;
+  padding: 0.25rem 0;
+  background: transparent;
+  transition: transform 200ms ease;
 }
 
 .relatedItem:hover {
-  border-color: rgba(171, 12, 18, 0.55);
   transform: translateY(-2px);
 }
 
 .relatedMedia {
   position: relative;
   aspect-ratio: 1;
-  background: #000;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 70%, rgba(171, 12, 18, 0.16), transparent 65%),
+    #05080f;
   overflow: hidden;
 }
 

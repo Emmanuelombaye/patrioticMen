@@ -98,24 +98,33 @@ export default async function CategoryPage({ params }: PageProps) {
             </header>
           </Reveal>
 
-          <Stagger className={styles.medsGrid}>
-            {meds.map((product) => (
-              <StaggerItem key={product.id}>
+          <Stagger
+            className={`${styles.medsGrid} ${
+              meds.length === 1
+                ? styles.medsOne
+                : meds.length === 2
+                  ? styles.medsTwo
+                  : styles.medsMany
+            }`}
+          >
+            {meds.map((product, index) => (
+              <StaggerItem key={product.id} className={index === 0 ? styles.medFeatured : undefined}>
                 <Link href={`/treatments/${product.id}`} className={styles.medCard}>
                   <div className={styles.medMedia}>
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      sizes="(max-width: 700px) 100vw, 33vw"
+                      sizes="(max-width: 700px) 100vw, 40vw"
                       className={styles.medImage}
                     />
+                    <span className={styles.medStudio} aria-hidden />
                   </div>
                   <div className={styles.medMeta}>
                     <h3>{product.name}</h3>
                     <p>{product.tagline}</p>
                     <ul>
-                      {product.benefits.map((benefit) => (
+                      {product.benefits.slice(0, 3).map((benefit) => (
                         <li key={benefit}>{benefit}</li>
                       ))}
                     </ul>

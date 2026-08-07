@@ -18,7 +18,7 @@
 .bgImage {
   object-fit: cover;
   object-position: 78% center;
-  filter: saturate(0.92) contrast(1.05) brightness(0.7);
+  filter: saturate(0.98) contrast(1.04) brightness(0.88);
 }
 
 .bgVideo {
@@ -27,9 +27,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 28%;
   opacity: 0;
-  filter: saturate(0.88) contrast(1.06) brightness(0.68);
+  filter: saturate(1) contrast(1.05) brightness(0.95);
   transition: opacity 900ms var(--ease-out);
   pointer-events: none;
 }
@@ -48,23 +48,23 @@
   background:
     linear-gradient(
       180deg,
-      rgba(4, 9, 20, 0.45) 0%,
-      rgba(4, 9, 20, 0.2) 28%,
-      rgba(4, 9, 20, 0.55) 58%,
-      rgba(4, 9, 20, 0.96) 100%
+      rgba(4, 9, 20, 0.28) 0%,
+      rgba(4, 9, 20, 0.08) 32%,
+      rgba(4, 9, 20, 0.28) 62%,
+      rgba(4, 9, 20, 0.78) 100%
     ),
     linear-gradient(
       100deg,
-      rgba(4, 9, 20, 0.92) 0%,
-      rgba(4, 9, 20, 0.55) 42%,
-      rgba(4, 9, 20, 0.2) 100%
+      rgba(4, 9, 20, 0.72) 0%,
+      rgba(4, 9, 20, 0.28) 40%,
+      rgba(4, 9, 20, 0.06) 100%
     ),
-    radial-gradient(ellipse 45% 50% at 80% 40%, rgba(171, 12, 18, 0.22), transparent 70%);
+    radial-gradient(ellipse 45% 50% at 80% 40%, rgba(171, 12, 18, 0.14), transparent 70%);
   pointer-events: none;
   z-index: 1;
 }
 
-.productFloat {
+.protocol {
   display: none;
 }
 
@@ -227,47 +227,49 @@
     padding: calc(var(--header-h) + 2rem) 0 4.5rem;
   }
 
-  .productFloat {
+  .protocol {
     display: grid;
     position: absolute;
     right: max(var(--gutter), calc((100% - var(--max)) / 2));
-    bottom: 14%;
+    bottom: 12%;
     z-index: 2;
-    justify-items: center;
+    justify-items: end;
+    gap: 0.75rem;
+  }
+
+  .protocolRail {
+    display: flex;
     gap: 0.7rem;
-    animation: floatY 5.5s ease-in-out infinite;
+    align-items: flex-end;
   }
 
-  .productImage {
-    width: 10.5rem;
-    height: 10.5rem;
+  .protocolShot {
+    position: relative;
+    width: 6.75rem;
+    height: 8.4rem;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 80%, rgba(171, 12, 18, 0.2), transparent 70%),
+      #05080f;
+    border: 1px solid rgba(238, 242, 248, 0.14);
+    overflow: hidden;
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45);
+  }
+
+  .protocolShot:nth-child(2) {
+    width: 7.5rem;
+    height: 9.4rem;
+    transform: translateY(-0.55rem);
+  }
+
+  .protocolImage {
     object-fit: cover;
-    border: 1px solid rgba(238, 242, 248, 0.16);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
-    background: #000;
   }
 
-  .productCaption {
+  .protocolCaption {
     font-family: var(--font-display);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(238, 242, 248, 0.5);
-  }
-}
-
-@keyframes floatY {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .productFloat {
-    animation: none;
+    color: rgba(238, 242, 248, 0.52);
   }
 }

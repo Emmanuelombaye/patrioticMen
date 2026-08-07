@@ -15,8 +15,8 @@ import styles from "./Hero.module.css";
 
 const clips = [
   {
-    src: media.lifestyle.heroRun,
-    label: "Performance",
+    src: media.lifestyle.heroClinic,
+    label: "Consultation",
   },
   {
     src: media.lifestyle.heroCare,
@@ -98,7 +98,6 @@ export function Hero() {
 
   useEffect(() => {
     if (!allowVideo || !ready[0]) return;
-    // Warm the second clip after the first is playable.
     const second = videoRefs.current[1];
     if (second && second.readyState < 2) {
       second.load();
@@ -172,16 +171,19 @@ export function Hero() {
         </div>
       ) : null}
 
-      <div className={styles.productFloat} aria-hidden>
-        <Image
-          src="/products/semaglutide.jpeg"
-          alt=""
-          width={220}
-          height={220}
-          className={styles.productImage}
-          priority
-        />
-        <p className={styles.productCaption}>*Image is Semaglutide vial.</p>
+      <div className={styles.protocol} aria-hidden>
+        <div className={styles.protocolRail}>
+          {[
+            "/products/semaglutide.jpeg",
+            "/products/testosterone.jpeg",
+            "/products/hair-regrowth.jpeg",
+          ].map((src) => (
+            <div key={src} className={styles.protocolShot}>
+              <Image src={src} alt="" fill sizes="120px" className={styles.protocolImage} />
+            </div>
+          ))}
+        </div>
+        <p className={styles.protocolCaption}>Featured protocols</p>
       </div>
 
       <div className={styles.content}>
