@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow_Condensed, Manrope } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { WhyPatriot } from "@/components/WhyPatriot";
 import { media } from "@/data/media";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
+        <WhyPatriot />
         <Footer />
       </body>
     </html>

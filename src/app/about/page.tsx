@@ -120,6 +120,57 @@ export default function AboutPage() {
           </Stagger>
         </div>
       </section>
+
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <Reveal>
+            <p className={styles.eyebrow}>Why Patriot</p>
+            <h2 className={styles.sectionTitle}>Approach, experts, excellence</h2>
+          </Reveal>
+
+          <div id="clinical" className={styles.anchorBlock}>
+            <Reveal>
+              <h3>Clinical standards</h3>
+              <p>
+                Protocols are evidence-informed and physician-reviewed. We prioritize
+                contraindications, titration discipline, and follow-up—so treatment is
+                deliberate, not impulsive.
+              </p>
+            </Reveal>
+          </div>
+
+          <div id="experts" className={styles.anchorBlock}>
+            <Reveal>
+              <h3>Meet the clinicians</h3>
+              <p>
+                Licensed U.S. providers review every evaluation. They decide eligibility,
+                match the right medication when appropriate, and remain available when
+                your plan needs refinement.
+              </p>
+            </Reveal>
+          </div>
+
+          <div id="excellence" className={styles.anchorBlock}>
+            <Reveal>
+              <h3>Member excellence</h3>
+              <p>
+                Excellence means clear process, discreet fulfillment, and support that
+                continues after the prescription. The standard is simple: care you can
+                respect—and results you can feel.
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal className={styles.ctaRow}>
+            <Link href="/start" className={styles.button}>
+              Start free evaluation
+            </Link>
+            <Link href="/safety" className={styles.textLink}>
+              Read patient safety
+            </Link>
+          </Reveal>
+        </div>
+      </section>
     </>
   );
 }

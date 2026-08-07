@@ -36,6 +36,8 @@ export function Footer() {
             <h2>Navigate</h2>
             <Link href="/treatments">All treatments</Link>
             <Link href="/how-it-works">How it works</Link>
+            <Link href="/safety">Patient safety</Link>
+            <Link href="/guides">Advice & guides</Link>
             <Link href="/about">About</Link>
             <Link href="/start">Get started</Link>
           </div>

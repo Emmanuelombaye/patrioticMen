@@ -181,6 +181,79 @@
   line-height: 1.6;
 }
 
+.textLink {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 0.55rem;
+  color: rgba(238, 242, 248, 0.78);
+  border-bottom: 1px solid rgba(238, 242, 248, 0.28);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-bottom: 0.2rem;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.textLink:hover {
+  color: var(--brand-white);
+  border-bottom-color: var(--brand-red);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.25rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.guideGrid {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.guideCard {
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.45rem;
+}
+
+.guideCard h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.guideCard p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.anchorBlock {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.anchorTarget {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+.anchorBlock h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+}
+
+.anchorBlock p {
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 42rem;
+}
+
 @media (min-width: 860px) {
   .triple {
     grid-template-columns: repeat(3, 1fr);
@@ -210,5 +283,37 @@
 
   .valueMedia {
     aspect-ratio: 1;
+  }
+
+  .guideGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem 1.75rem;
+  }
+
+  .guideCard {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    padding: 0 0 0 1.2rem;
+  }
+
+  .guideCard:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .guideGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .guideCard {
+    border-left: 1px solid var(--line);
+    padding-left: 1.2rem;
+  }
+
+  .guideCard:nth-child(3n + 1) {
+    border-left: 0;
+    padding-left: 0;
   }
 }
