@@ -2,6 +2,7 @@
 export const media = {
   brand: {
     mark: "/brand/mark.jpeg",
+    markSvg: "/brand/mark.svg",
     logo: "/brand/logo.jpeg",
   },
   lifestyle: {

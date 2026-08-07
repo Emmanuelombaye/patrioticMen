@@ -11,6 +11,13 @@ export const metadata: Metadata = {
   title: "How it works",
   description:
     "See how Patriot Men's Health takes you from online evaluation to discreet nationwide delivery.",
+  alternates: { canonical: "/how-it-works" },
+  openGraph: {
+    title: "How it works | Patriot Men's Health",
+    description:
+      "Pick a programme, complete an evaluation, get discreet delivery if prescribed.",
+    url: "/how-it-works",
+  },
 };
 
 const points = [

@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: "Advice & guides",
   description:
     "Practical guides for Patriot programmes—weight loss, hormones, sexual health, hair regrowth, and longevity—plus help getting started.",
+  alternates: { canonical: "/guides" },
+  openGraph: {
+    title: "Advice & guides | Patriot Men's Health",
+    description:
+      "Programme guides and help centre for Patriot Men's Health patients.",
+    url: "/guides",
+  },
 };
 
 const help = [

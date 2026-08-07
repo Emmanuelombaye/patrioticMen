@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "Patient safety",
   description:
     "How Patriot Men's Health approaches regulated standards, safe prescribing, licensed U.S. providers, and discreet pharmacy fulfillment.",
+  alternates: { canonical: "/safety" },
+  openGraph: {
+    title: "Patient safety | Patriot Men's Health",
+    description:
+      "Licensed review, clear contraindications, and discreet fulfillment—clinical judgment first.",
+    url: "/safety",
+  },
 };
 
 const blocks = [

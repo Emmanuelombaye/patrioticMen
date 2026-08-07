@@ -18,9 +18,41 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return { title: "Treatment" };
+
+  const category = getCategory(product.categoryId);
+  const title = product.name;
+  const description = product.summary;
+  const path = `/treatments/${product.id}`;
+
   return {
-    title: product.name,
-    description: product.summary,
+    title,
+    description,
+    keywords: [
+      product.name,
+      category?.name ?? product.categoryId,
+      "men's health",
+      "physician guided",
+      product.format,
+    ],
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${title} | Patriot Men's Health`,
+      description,
+      url: path,
+      type: "website",
+      images: [
+        {
+          url: product.image,
+          alt: `${product.name} product`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Patriot Men's Health`,
+      description,
+      images: [product.image],
+    },
   };
 }
 

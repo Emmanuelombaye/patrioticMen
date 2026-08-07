@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Patriot Men's Health helps modern American men reclaim strength, energy, confidence, and longevity through physician-guided care.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Patriot Men's Health",
+    description:
+      "Physician-guided care for men who refuse to settle—strength, energy, confidence, and longevity.",
+    url: "/about",
+  },
 };
 
 const values = [

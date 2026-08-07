@@ -24,9 +24,33 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { category: id } = await params;
   const category = getCategory(id);
   if (!category) return { title: "Programme" };
+
+  const title = `${category.name} programme`;
+  const description = category.summary;
+  const path = `/${category.id}`;
+
   return {
-    title: category.name,
-    description: category.summary,
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${title} | Patriot Men's Health`,
+      description,
+      url: path,
+      type: "website",
+      images: [
+        {
+          url: category.image,
+          alt: `${category.name} programme`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Patriot Men's Health`,
+      description,
+      images: [category.image],
+    },
   };
 }
 

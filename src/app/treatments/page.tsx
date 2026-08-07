@@ -11,6 +11,13 @@ export const metadata: Metadata = {
   title: "All treatments",
   description:
     "Browse Patriot Men's Health programmes for weight loss, low testosterone, erectile dysfunction, hair loss, longevity, and recovery.",
+  alternates: { canonical: "/treatments" },
+  openGraph: {
+    title: "All treatments | Patriot Men's Health",
+    description:
+      "Browse Patriot Men's Health programmes for weight loss, hormones, sexual health, hair regrowth, and longevity.",
+    url: "/treatments",
+  },
 };
 
 export default function TreatmentsPage() {

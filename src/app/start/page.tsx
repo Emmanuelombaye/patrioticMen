@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Start evaluation",
   description:
     "Begin your Patriot Men's Health evaluation. Licensed providers review eligibility before any prescription.",
+  alternates: { canonical: "/start" },
+  openGraph: {
+    title: "Start free evaluation | Patriot Men's Health",
+    description:
+      "Begin your clinical intake. Licensed U.S. providers review eligibility before any prescription.",
+    url: "/start",
+  },
 };
 
 export default function StartPage() {
