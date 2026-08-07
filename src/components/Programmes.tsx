@@ -3,13 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { categories, getProductsByCategory } from "@/data/products";
-import { Reveal, Stagger, StaggerItem, scaleIn } from "./motion";
+import { Reveal, Stagger, StaggerItem, fadeUp } from "./motion";
 import styles from "./Programmes.module.css";
 
 export function Programmes() {
-  const [lead, ...rest] = categories;
-  const leadMeds = getProductsByCategory(lead.id);
-
   return (
     <section className={styles.section} id="programmes" aria-labelledby="programmes-heading">
       <div className={styles.inner}>
@@ -29,81 +26,59 @@ export function Programmes() {
           </header>
         </Reveal>
 
-        <div className={styles.bento}>
-          <Reveal className={styles.lead}>
-            <Link href={`/${lead.id}`} className={styles.leadCard}>
-              <div className={styles.leadMedia}>
-                <Image
-                  src={lead.image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 900px) 100vw, 60vw"
-                  className={styles.leadImage}
-                  priority
-                />
-                <span className={styles.leadVeil} aria-hidden />
-              </div>
-              <div className={styles.leadCopy}>
-                <p className={styles.label}>{lead.shortName}</p>
-                <h3>{lead.headline}</h3>
-                <p className={styles.tagline}>{lead.tagline}</p>
-                <div className={styles.leadProducts} aria-hidden>
-                  {leadMeds.slice(0, 2).map((product) => (
-                    <div key={product.id} className={styles.leadProduct}>
-                      <Image
-                        src={product.image}
-                        alt=""
-                        width={88}
-                        height={88}
-                        className={styles.leadProductImage}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <span className={styles.cta}>Explore programme</span>
-              </div>
-            </Link>
-          </Reveal>
+        <Stagger className={styles.list}>
+          {categories.map((category, index) => {
+            const medCount = getProductsByCategory(category.id).length;
+            const reverse = index % 2 === 1;
+            const featured = index === 0;
 
-          <Stagger className={styles.grid}>
-            {rest.map((category) => {
-              const meds = getProductsByCategory(category.id);
-              return (
-                <StaggerItem key={category.id} variants={scaleIn}>
-                  <Link href={`/${category.id}`} className={styles.card}>
-                    <div className={styles.media}>
-                      <Image
-                        src={category.image}
-                        alt=""
-                        fill
-                        sizes="(max-width: 700px) 100vw, 40vw"
-                        className={styles.image}
-                      />
-                      <span className={styles.veil} aria-hidden />
-                      {meds[0] ? (
-                        <div className={styles.cardProduct} aria-hidden>
-                          <Image
-                            src={meds[0].image}
-                            alt=""
-                            width={72}
-                            height={72}
-                            className={styles.cardProductImage}
-                          />
-                        </div>
-                      ) : null}
-                    </div>
-                    <div className={styles.meta}>
-                      <p className={styles.label}>{category.shortName}</p>
-                      <h3>{category.headline}</h3>
-                      <p className={styles.tagline}>{category.tagline}</p>
-                      <span className={styles.cta}>Explore programme</span>
-                    </div>
-                  </Link>
-                </StaggerItem>
-              );
-            })}
-          </Stagger>
-        </div>
+            return (
+              <StaggerItem key={category.id} variants={fadeUp}>
+                <Link
+                  href={`/${category.id}`}
+                  className={[
+                    styles.row,
+                    reverse ? styles.rowReverse : "",
+                    featured ? styles.rowFeatured : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <div className={styles.media}>
+                    <Image
+                      src={category.image}
+                      alt=""
+                      fill
+                      sizes={
+                        featured
+                          ? "(max-width: 900px) 100vw, 52vw"
+                          : "(max-width: 900px) 100vw, 42vw"
+                      }
+                      className={styles.image}
+                      priority={featured}
+                    />
+                    <span className={styles.veil} aria-hidden />
+                    <span className={styles.index} aria-hidden>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className={styles.copy}>
+                    <p className={styles.label}>{category.shortName}</p>
+                    <h3>{category.headline}</h3>
+                    <p className={styles.tagline}>{category.tagline}</p>
+                    <p className={styles.meta}>
+                      {medCount === 1 ? "1 treatment available" : `${medCount} treatments available`}
+                    </p>
+                    <span className={styles.cta}>
+                      Explore programme
+                      <span aria-hidden>→</span>
+                    </span>
+                  </div>
+                </Link>
+              </StaggerItem>
+            );
+          })}
+        </Stagger>
       </div>
     </section>
   );

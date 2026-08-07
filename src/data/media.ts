@@ -13,6 +13,7 @@ export const media = {
     followUp: "/lifestyle/how-followup.jpg",
     aboutHero: "/lifestyle/about-hero.jpg",
     startHero: "/lifestyle/start-hero.jpg",
+    whyPatriotCard: "/lifestyle/why-patriot-card.png",
     healthVideo: "/video/health.mp4",
     heroClinic: "/video/hero-clinic.mp4",
     heroCare: "/video/hero-care.mp4",

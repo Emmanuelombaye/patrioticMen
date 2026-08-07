@@ -84,12 +84,23 @@
   min-height: 2.5rem;
   display: inline-flex;
   align-items: center;
+  gap: 0.25rem;
   transition: color 180ms ease;
+}
+
+.chevron {
+  display: inline-block;
+  transition: transform 200ms ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
 }
 
 .nav a:hover,
 .nav a.active,
-.dropdownBtn:hover {
+.dropdownBtn:hover,
+.dropdownBtnActive {
   color: var(--brand-white);
 }
 
@@ -105,6 +116,10 @@
 
 .dropdown {
   position: relative;
+}
+
+.megaDropdown {
+  position: static;
 }
 
 .dropdownBtn {
@@ -155,6 +170,179 @@
   font-size: 0.8rem;
   color: var(--muted);
   line-height: 1.35;
+}
+
+/* Mega Dropdown Menu (Why Patriot Numan-Style) */
+.megaMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1080px, 92vw);
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(238, 242, 248, 0.12);
+  background: rgba(4, 9, 20, 0.97);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.megaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 280px;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.megaCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.megaHeading {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  margin-bottom: 0.35rem;
+  padding-left: 0.5rem;
+}
+
+.megaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.6rem 0.65rem;
+  border-radius: 0.35rem;
+  transition: background 180ms ease, transform 180ms ease;
+  text-decoration: none;
+}
+
+.megaItem:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.megaTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--brand-white);
+  line-height: 1.3;
+}
+
+.megaDesc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.megaCardCol {
+  border-left: 1px solid rgba(238, 242, 248, 0.08);
+  padding-left: 1.25rem;
+  display: flex;
+}
+
+.megaCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 0.45rem;
+  overflow: hidden;
+  border: 1px solid rgba(238, 242, 248, 0.1);
+  background: rgba(12, 20, 36, 0.7);
+  transition: border-color 200ms ease, transform 200ms ease;
+  text-decoration: none;
+}
+
+.megaCard:hover {
+  border-color: rgba(171, 12, 18, 0.5);
+  transform: translateY(-2px);
+}
+
+.megaCardMedia {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+
+.megaCardImg {
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 300ms ease;
+}
+
+.megaCard:hover .megaCardImg {
+  transform: scale(1.04);
+}
+
+.megaCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 9, 20, 0.1) 0%, rgba(4, 9, 20, 0.85) 100%);
+}
+
+.megaCardBadge {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  padding: 0.18rem 0.5rem;
+  background: rgba(171, 12, 18, 0.85);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
+}
+
+.megaCardBody {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.megaCardTitle {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--brand-white);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.megaCardText {
+  font-size: 0.76rem;
+  color: var(--muted);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.megaCardCta {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--brand-white);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  margin-top: auto;
+  padding-top: 0.35rem;
+}
+
+.megaCardCta span {
+  transition: transform 180ms ease;
+}
+
+.megaCard:hover .megaCardCta span {
+  transform: translateX(3px);
 }
 
 .actions {
@@ -246,6 +434,10 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.mobileBlock {
+  margin-bottom: 1.25rem;
+}
+
 .mobileLabel {
   font-family: var(--font-display);
   letter-spacing: 0.14em;
@@ -263,22 +455,31 @@
 
 .mobile a {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   min-height: 3.1rem;
-  padding: 0.65rem 0;
+  padding: 0.55rem 0;
   border-bottom: 1px solid var(--line);
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 5.5vw, 1.75rem);
+  font-size: clamp(1.25rem, 4.8vw, 1.55rem);
   font-weight: 700;
   letter-spacing: 0.01em;
 }
 
+.mobileSub {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
+
 .mobileSecondary {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .mobileSecondary a {
-  font-size: clamp(1.15rem, 4.8vw, 1.4rem);
+  font-size: clamp(1.1rem, 4.2vw, 1.3rem);
 }
 
 .mobileCta {
@@ -325,3 +526,4 @@
     display: none;
   }
 }
+
